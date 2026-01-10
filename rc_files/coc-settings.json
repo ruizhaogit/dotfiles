@@ -1,0 +1,15 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [],
+  "python.linting.enabled": false,
+  "python.linting.pylintEnabled": false,
+  "pyright.disableProgressNotifications": true,
+  "pyright.disableDocumentation": true,
+  "pyright.disableDiagnostics": true,
+  "pyright.inlayHints.enable": false,
+  "diagnostic.displayByAle": true,
+  "pyright.inlayHints.enable": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false
+}
+
