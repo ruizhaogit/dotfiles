@@ -21,14 +21,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # [/configure --enable-python3interp --with-python3-command=/usr/bin/python3.10]
 # [/configure --enable-python3interp --with-python3-command=/home/ubuntu/.vim/lib/python/bin/python3.11]
 
+sudo apt install python3.10-dev -y
+sudo apt install software-properties-common -y
+sudo apt install libncurses-dev -y
 curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
+cd ~/ruizhao/workspace
 tar -xvzf ~/ruizhao/workspace/vim.tar.gz
-cd ~/ruizhao/workspace/vim
-sudo apt install python3.10-dev
-sudo apt install software-properties-common
-sudo apt install libncurses-dev
-make distclean
+cd ~/ruizhao/workspace/vim-9.1.2077
 ./configure --enable-python3interp --with-python3-command=/usr/bin/python3.10
+make
+sudo make install
 
 ## vim
 # download .vimrc
@@ -59,7 +61,6 @@ sudo apt-get install ripgrep
 # make
 # (sudo) make install (used root permission)
 
-mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace
 git clone https://github.com/universal-ctags/ctags.git
 cd ctags
