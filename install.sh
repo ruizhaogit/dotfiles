@@ -42,9 +42,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 sudo apt-get install ripgrep -y
 
 # install universal-ctags
-cd ~/ruizhao/workspace
-git clone https://github.com/universal-ctags/ctags.git
-cd ctags
+git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
+cd ~/ruizhao/workspace/ctags
 ./autogen.sh
 ./configure --prefix=/usr/local
 make
