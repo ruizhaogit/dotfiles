@@ -54,6 +54,11 @@ nvm install 20.18.1
 nvm use 20.18.1
 # npm install -g @google/gemini-cli
 
+# update ~/.bashrc
+echo "set -o vi" >> ~/.bashrc
+echo "export TERM=xterm-256color" >> ~/.bashrc
+echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+
 # kmonad on ubuntu
 # Download the release binary
 # https://github.com/kmonad/kmonad/releases
