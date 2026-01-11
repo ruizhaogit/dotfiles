@@ -1,3 +1,5 @@
+# git clone https://github.com/ruizhaogit/dotfiles
+
 ## tmux
 # download .tmux.conf
 curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
