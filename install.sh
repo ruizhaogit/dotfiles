@@ -21,6 +21,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # [/configure --enable-python3interp --with-python3-command=/usr/bin/python3.10]
 # [/configure --enable-python3interp --with-python3-command=/home/ubuntu/.vim/lib/python/bin/python3.11]
 
+curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
+tar -xvzf ~/ruizhao/workspace/vim.tar.gz
+
 ## vim
 # download .vimrc
 curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.vimrc"
