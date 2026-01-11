@@ -50,13 +50,6 @@ cd ctags
 make
 sudo make install
 
-# install nvm for coc and gemini 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-# source ~/.bashrc
-# nvm install 20.18.1
-# nvm use 20.18.1
-# npm install -g @google/gemini-cli
-
 # update ~/.bashrc
 echo "set -o vi" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
@@ -77,3 +70,11 @@ sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/s
 # sudo systemctl enable kmonad
 # sudo systemctl status kmonad
 # sudo systemctl stop kmonad
+
+# install nvm for coc and gemini 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+# source ~/.bashrc
+# nvm install 20.18.1
+# nvm use 20.18.1
+# npm install -g @google/gemini-cli
+
