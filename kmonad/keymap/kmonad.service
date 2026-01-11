@@ -4,7 +4,7 @@ Description=KMonad keyboard config
 [Service]
 Restart=always
 RestartSec=3
-ExecStart=/usr/bin/kmonad /home/reyzhao/workspace/kmonad/keymap/tutorial.kbd
+ExecStart=/usr/bin/kmonad ~/ruizhao/workspace/dotfiles/kmonad/keymap/tutorial.kbd
 Nice=-20
 
 [Install]
