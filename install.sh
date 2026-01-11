@@ -38,6 +38,8 @@ curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.
 # vim +'PlugInstall --sync' +qa
 vim -es -u ~/.vimrc +'PlugInstall --sync' +qa
 
+python -m pip install --upgrade trzsz
+
 # install universal-ctags
 echo 'install universal-ctags'
 git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
