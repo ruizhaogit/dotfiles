@@ -39,15 +39,19 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # install ripgrep
+echo 'install ripgrep'
 sudo apt install ripgrep -y
+echo 'install ripgrep done'
 
 # install universal-ctags
+echo 'install universal-ctags'
 git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
 cd ~/ruizhao/workspace/ctags
 ./autogen.sh
 ./configure --prefix=/usr/local
 make
 sudo make install
+echo 'install universal-ctags done'
 
 # update ~/.bashrc
 echo "set -o vi" >> ~/.bashrc
