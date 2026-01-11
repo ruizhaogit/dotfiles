@@ -85,12 +85,5 @@ nvm install 20.18.1
 nvm use 20.18.1
 npm install -g @google/gemini-cli
 
-tmux new-session -d
-sleep 1
 ~/.tmux/plugins/tpm/bin/install_plugins
-tmux kill-server
 
-
-# after run this install.sh
-# source ~/.bashrc
-# in tmux, press prefix + I (capital i, as in Install) to fetch the plugin.
