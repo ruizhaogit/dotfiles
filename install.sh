@@ -18,6 +18,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # in tmux, press prefix + I (capital i, as in Install) to fetch the plugin.
 
 # # build vim from source
+echo 'build vim from source'
 curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
 cd ~/ruizhao/workspace
 tar -xvzf ~/ruizhao/workspace/vim.tar.gz
@@ -25,6 +26,7 @@ cd ~/ruizhao/workspace/vim-9.1.2077
 ./configure --enable-python3interp --with-python3-command=/usr/bin/python3.10
 make
 sudo make install
+echo 'build vim from source done'
 
 ## vim
 # download .vimrc
