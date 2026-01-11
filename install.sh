@@ -83,6 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install 20.18.1
 nvm use 20.18.1
+npm install -g @google/gemini-cli
 
 tmux new-session -d
 sleep 1
