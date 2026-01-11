@@ -34,10 +34,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.
 # in vim, run :PlugInstall
 curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
 
-# install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
 # install ripgrep
 echo 'install ripgrep'
 sudo apt install ripgrep -y
