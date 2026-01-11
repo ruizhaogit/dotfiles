@@ -79,4 +79,3 @@ nvm install 20.18.1
 nvm use 20.18.1
 npm install -g @google/gemini-cli
 
-
