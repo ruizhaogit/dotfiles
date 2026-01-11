@@ -36,7 +36,6 @@ curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/h
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
 # vim +'PlugInstall --sync' +qa
-# vim --clean + 'source ~/.vimrc' +'PlugInstall --sync' +qa
 vim -es -u ~/.vimrc +'PlugInstall --sync' +qa
 
 # install universal-ctags
