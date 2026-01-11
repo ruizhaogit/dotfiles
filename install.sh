@@ -76,6 +76,12 @@ echo 'install kmonad done'
 # sudo systemctl status kmonad
 # sudo systemctl stop kmonad
 
+# install fzf
+echo 'install fzf'
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+echo 'install fzf done'
+
 # install nvm for coc and gemini 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
