@@ -2,8 +2,6 @@
 
 curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
-
-for kmonad  
 ls /dev/input/by-id  
 edit kmonad/keymap/tutorial.kbd
 
