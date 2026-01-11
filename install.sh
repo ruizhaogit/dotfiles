@@ -59,6 +59,17 @@ sudo apt-get install ripgrep
 # make
 # (sudo) make install (used root permission)
 
+mkdir -p ~/ruizhao/workspace
+cd ~/ruizhao/workspace
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+sudo apt install autoconf pkg-config
+sudo apt install make build-essential
+./autogen.sh
+./configure --prefix=/usr/local
+make
+sudo make install
+
 # install nvm for coc and gemini 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install 20.18.1
