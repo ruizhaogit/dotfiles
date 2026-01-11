@@ -64,14 +64,6 @@ sudo cp ./kmonad /usr/bin/kmonad
 sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/system/kmonad.service
 echo 'install kmonad done'
 
-# https://www.swe-devops.com/posts/kmonad-service-systemd/
-# /etc/systemd/system/kmonad.service
-# sudo systemctl daemon-reload
-# sudo systemctl start kmonad
-# sudo systemctl enable kmonad
-# sudo systemctl status kmonad
-# sudo systemctl stop kmonad
-
 # install fzf
 echo 'install fzf'
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
