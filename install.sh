@@ -47,7 +47,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # eval "$(fzf --bash)"
 
 # install ripgrep
-sudo apt-get install ripgrep
+sudo apt-get install ripgrep -y
 
 # https://github.com/universal-ctags/ctags
 # brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -64,8 +64,8 @@ sudo apt-get install ripgrep
 cd ~/ruizhao/workspace
 git clone https://github.com/universal-ctags/ctags.git
 cd ctags
-sudo apt install autoconf pkg-config
-sudo apt install make build-essential
+sudo apt install autoconf pkg-config -y
+sudo apt install make build-essential -y
 ./autogen.sh
 ./configure --prefix=/usr/local
 make
