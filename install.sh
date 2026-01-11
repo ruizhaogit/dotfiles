@@ -80,3 +80,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 # nvm use 20.18.1
 # npm install -g @google/gemini-cli
 
+# after run this install.sh
+# source ~/.bashrc
+# in tmux, press prefix + I (capital i, as in Install) to fetch the plugin.
+# in vim, run :PlugInstall
