@@ -23,6 +23,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
 tar -xvzf ~/ruizhao/workspace/vim.tar.gz
+cd ~/ruizhao/workspace/vim
+sudo apt install python3.10-dev
+sudo apt install software-properties-common
+sudo apt install libncurses-dev
+make distclean
+./configure --enable-python3interp --with-python3-command=/usr/bin/python3.10
 
 ## vim
 # download .vimrc
