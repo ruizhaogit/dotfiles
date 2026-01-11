@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # install ripgrep
-sudo apt-get install ripgrep -y
+sudo apt install ripgrep -y
 
 # install universal-ctags
 git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
