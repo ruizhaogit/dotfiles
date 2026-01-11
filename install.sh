@@ -16,7 +16,7 @@ sudo apt install ripgrep -y
 curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
 # download tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# in tmux, press prefix + I (capital i, as in Install) to fetch the plugin.
+~/.tmux/plugins/tpm/bin/install_plugins
 
 # # build vim from source
 echo 'build vim from source'
