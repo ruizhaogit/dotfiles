@@ -57,11 +57,13 @@ echo 'eval "$(fzf --bash)"' >> ~/.bashrc
 
 # kmonad
 # https://github.com/kmonad/kmonad/releases
+echo 'install kmonad'
 cd ~/ruizhao/workspace
 curl -fLo ~/ruizhao/workspace/kmonad https://github.com/kmonad/kmonad/releases/download/0.4.4/kmonad
 chmod +x kmonad
 sudo cp ./kmonad /usr/bin/kmonad
 sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/system/kmonad.service
+echo 'install kmonad done'
 
 # https://www.swe-devops.com/posts/kmonad-service-systemd/
 # /etc/systemd/system/kmonad.service
