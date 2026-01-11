@@ -9,6 +9,7 @@ sudo apt install software-properties-common -y
 sudo apt install libncurses-dev -y
 sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
+sudo apt install ripgrep -y
 
 ## tmux
 # download .tmux.conf
@@ -33,13 +34,8 @@ echo 'build vim from source done'
 curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.vimrc"
 # install vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-# in vim, run :PlugInstall
 curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
-
-# install ripgrep
-echo 'install ripgrep'
-sudo apt install ripgrep -y
-echo 'install ripgrep done'
+vim +'PlugInstall --sync' +qa
 
 # install universal-ctags
 echo 'install universal-ctags'
@@ -88,10 +84,13 @@ export NVM_DIR="$HOME/.nvm"
 nvm install 20.18.1
 nvm use 20.18.1
 
+tmux new-session -d
+sleep 1
+~/.tmux/plugins/tpm/bin/install_plugins
+tmux kill-server
+
+
 # after run this install.sh
 # source ~/.bashrc
-# nvm install 20.18.1
-# nvm use 20.18.1
 # npm install -g @google/gemini-cli (optional)
 # in tmux, press prefix + I (capital i, as in Install) to fetch the plugin.
-# in vim, run :PlugInstall
