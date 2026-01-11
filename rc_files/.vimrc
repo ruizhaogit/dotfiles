@@ -391,8 +391,8 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'preservim/nerdtree'
 Plug 'wellle/context.vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'tags': 'v0.0.82'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'tags': 'v0.0.82'}
 Plug 'gruvbox-community/gruvbox'
 Plug 'lervag/vimtex'
 Plug 'airblade/vim-gitgutter'
