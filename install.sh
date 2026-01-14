@@ -10,6 +10,7 @@ sudo apt install libncurses-dev -y
 sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
 sudo apt install ripgrep -y
+python -m pip install --upgrade trzsz
 
 ## tmux
 # download .tmux.conf
@@ -31,14 +32,14 @@ echo 'build vim from source done'
 
 ## vim
 # download .vimrc
+echo 'install vim plugins'
 curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.vimrc"
 # install vim plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
-vim +'PlugInstall --sync' +qa
-# vim -es -u ~/.vimrc +'PlugInstall --sync' +qa
-
-python -m pip install --upgrade trzsz
+# vim +'PlugInstall --sync' +qa
+vim -es -u ~/.vimrc +'PlugInstall --sync' +qa
+echo 'install vim plugins done'
 
 # install universal-ctags
 echo 'install universal-ctags'
@@ -68,7 +69,7 @@ echo 'install kmonad done'
 # install fzf
 echo 'install fzf'
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --all
 echo 'install fzf done'
 
 # install nvm for coc and gemini 
