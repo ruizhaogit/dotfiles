@@ -1,5 +1,7 @@
 # curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
+set -e
+
 mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
 git clone https://github.com/ruizhaogit/dotfiles
