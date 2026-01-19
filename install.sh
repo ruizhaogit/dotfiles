@@ -27,7 +27,7 @@ curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/v
 cd ~/ruizhao/workspace
 tar -xvzf ~/ruizhao/workspace/vim.tar.gz
 cd ~/ruizhao/workspace/vim-9.1.2077
-./configure --enable-python3interp --with-python3-command=/usr/bin/python3.10
+./configure --enable-python3interp --with-python3-command=$(which python3)
 make
 sudo make install
 echo 'build vim from source done'
