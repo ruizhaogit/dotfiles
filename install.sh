@@ -65,6 +65,13 @@ cd ~/ruizhao/workspace
 curl -fLo ~/ruizhao/workspace/kmonad https://github.com/kmonad/kmonad/releases/download/0.4.4/kmonad
 chmod +x kmonad
 sudo cp ./kmonad /usr/bin/kmonad
+
+KBD_NAME=$(ls /dev/input/by-id | grep -- -kbd | head -n 1)
+if [ -n "$KBD_NAME" ]; then
+    sed -i "4c input  (device-file \"/dev/input/by-id/${KBD_NAME}\")" ~/ruizhao/workspace/dotfiles/kmonad/keymap/tutorial.kbd
+fi
+sed -i "s|~|$HOME|" ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service
+
 sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/system/kmonad.service
 echo 'install kmonad done'
 
