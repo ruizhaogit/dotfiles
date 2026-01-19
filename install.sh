@@ -1,6 +1,6 @@
 # curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
-set -e
+# set -e
 
 mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
