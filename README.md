@@ -25,3 +25,8 @@ sudo systemctl status kmonad
 ```
 sudo systemctl stop kmonad  
 ```
+
+install tabby terminal on ubuntu:  
+download .deb from https://github.com/Eugeny/tabby  
+sudo dpkg -i *.deb  
+install trzsz plugin: https://github.com/trzsz/tabby-trzsz  
