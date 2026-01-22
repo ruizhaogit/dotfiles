@@ -43,3 +43,8 @@ sudo vim /etc/apt/apt.conf
 ```  
 Acquire::http::Proxy "http://username:password@yourproxyaddress:proxyport";
 ```
+
+to fix coc  
+```
+:call coc#util#install()
+```
