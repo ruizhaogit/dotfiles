@@ -28,6 +28,7 @@ sudo systemctl stop kmonad
 
 install tabby terminal on ubuntu:  
 download .deb from https://github.com/Eugeny/tabby  
+curl https://github.com/Eugeny/tabby/releases/download/v1.0.230/tabby-1.0.230-linux-x64.deb
 sudo dpkg -i *.deb  
 install trzsz plugin: https://github.com/trzsz/tabby-trzsz  
 
