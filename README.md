@@ -34,8 +34,12 @@ wget https://github.com/Eugeny/tabby/releases/download/v1.0.230/tabby-1.0.230-li
 ```
 sudo dpkg -i tabby-1.0.230-linux-x64.deb
 ```
-install trzsz plugin: https://github.com/trzsz/tabby-trzsz  
+install trzsz plugin in tabby gui: https://github.com/trzsz/tabby-trzsz  
 
 configure proxy for ubuntu apt install  
-sudo vim /etc/apt/apt.conf  
-Acquire::http::Proxy "http://username:password@yourproxyaddress:proxyport";  
+```
+sudo vim /etc/apt/apt.conf
+```
+```  
+Acquire::http::Proxy "http://username:password@yourproxyaddress:proxyport";
+```
