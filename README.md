@@ -29,7 +29,7 @@ sudo systemctl stop kmonad
 install tabby terminal on ubuntu:  
 download .deb from https://github.com/Eugeny/tabby  
 ```
-wget https://github.com/Eugeny/tabby/releases/download/v1.0.230/tabby-1.0.230-linux-x64.deb
+curl -fLO https://github.com/Eugeny/tabby/releases/download/v1.0.230/tabby-1.0.230-linux-x64.deb
 ```
 ```
 sudo dpkg -i tabby-1.0.230-linux-x64.deb
