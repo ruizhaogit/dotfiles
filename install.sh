@@ -13,6 +13,7 @@ sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
 sudo apt install ripgrep -y
 sudo apt install ccls -y
+sudo apt install bear -y
 python -m pip install --upgrade trzsz
 
 ## tmux
