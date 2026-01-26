@@ -12,6 +12,7 @@ sudo apt install libncurses-dev -y
 sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
 sudo apt install ripgrep -y
+sudo apt install ccls -y
 python -m pip install --upgrade trzsz
 
 ## tmux
