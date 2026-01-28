@@ -67,7 +67,7 @@ mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
 git clone https://github.com/ruizhaogit/dotfiles
 
-# kmonad
+## kmonad
 # https://github.com/kmonad/kmonad/releases
 echo 'install kmonad'
 cd ~/ruizhao/workspace
