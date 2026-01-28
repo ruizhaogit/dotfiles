@@ -88,7 +88,6 @@ echo 'install fzf done'
 git config --global pager.color false
 git config --global pager.show 'vim -R -'
 git config --global core.editor $(which vim)
-git config --global core.pager 'vim -R -'
 git config --global diff.tool vimdiff
 git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
 git config --global merge.tool fugitive
