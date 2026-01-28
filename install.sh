@@ -91,6 +91,7 @@ git config --global core.editor $(which vim)
 git config --global diff.tool vimdiff
 git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
 git config --global merge.tool fugitive
+git config --global mergetool.keepBackup false
 
 # install nvm for coc and gemini 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
