@@ -15,6 +15,7 @@ sudo apt install ripgrep -y
 sudo apt install ccls -y
 sudo apt install bear -y
 sudo apt install rsync -y
+sudo apt install git -y
 python -m pip install --upgrade trzsz
 
 ## tmux
