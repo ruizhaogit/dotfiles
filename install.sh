@@ -84,6 +84,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 echo 'install fzf done'
 
+# git config
+git config --global pager.color false
+git config --global pager.show 'vim -R -'
+git config --global core.editor $(which vim)
+git config --global diff.tool vimdiff
+git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
+git config --global merge.tool fugitive
+
 # install nvm for coc and gemini 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
