@@ -2,10 +2,9 @@
 
 # set -e
 
-mkdir -p ~/ruizhao/workspace
-cd ~/ruizhao/workspace 
-git clone https://github.com/ruizhaogit/dotfiles
-
+## apt install pkgs
+echo 'apt install pkgs'
+sudo apt update
 sudo apt install python3.10-dev -y
 sudo apt install software-properties-common -y
 sudo apt install libncurses-dev -y
@@ -17,6 +16,7 @@ sudo apt install bear -y
 sudo apt install rsync -y
 sudo apt install git -y
 python -m pip install --upgrade trzsz
+echo 'apt install pkgs done'
 
 ## tmux
 # download .tmux.conf
@@ -25,7 +25,7 @@ curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/re
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-# # build vim from source
+## build vim from source
 echo 'build vim from source'
 curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
 cd ~/ruizhao/workspace
@@ -61,6 +61,11 @@ echo 'install universal-ctags done'
 echo "set -o vi" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
 echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+
+# clone dotfiles
+mkdir -p ~/ruizhao/workspace
+cd ~/ruizhao/workspace 
+git clone https://github.com/ruizhaogit/dotfiles
 
 # kmonad
 # https://github.com/kmonad/kmonad/releases
