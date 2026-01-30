@@ -1,6 +1,6 @@
 # curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
-# set -e
+set -e
 
 # Confirmation (Works even via curl pipe)
 read -p "Overwrite /etc/apt/sources.list with Aliyun Jammy sources? (y/n): " confirm < /dev/tty
