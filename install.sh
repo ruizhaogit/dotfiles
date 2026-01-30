@@ -2,8 +2,23 @@
 
 # set -e
 
+# clone dotfiles
+mkdir -p ~/ruizhao/workspace
+cd ~/ruizhao/workspace 
+git clone https://github.com/ruizhaogit/dotfiles
+
+# Check architecture
+ARCH=$(uname -m)
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+    echo "System is ARM ($ARCH)"
+    IS_ARM=true
+else
+    echo "System is not ARM ($ARCH)"
+    IS_ARM=false
+fi
+
 ## apt install pkgs
-echo 'apt install pkgs'
+echo 'install pkgs'
 sudo apt update
 sudo apt install python3.10-dev -y
 sudo apt install software-properties-common -y
@@ -12,12 +27,29 @@ sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
 sudo apt install git -y
 sudo apt install rsync -y
-sudo apt install ripgrep -y
-sudo apt install ccls -y
-sudo apt install bear -y
-sudo apt install tmux -y
 python -m pip install --upgrade trzsz
-echo 'apt install pkgs done'
+
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+    # # install ripgrep
+    # mkdir -p ~/ruizhao/workspace/ripgrep
+    # cd ~/ruizhao/workspace/ripgrep
+    # curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
+    # tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
+    # sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
+    # sudo snap install ccls --classic
+    # sudo apt install tmux --classic
+    sudo pacman -S ripgrep
+    sudo pacman -S ccls
+    sudo pacman -S bear
+    sudo pacman -S tmux
+else
+    sudo apt install ripgrep -y
+    sudo apt install ccls -y
+    sudo apt install bear -y
+    sudo apt install tmux -y
+fi
+
+echo 'install pkgs done'
 
 ## tmux
 # download .tmux.conf
@@ -62,11 +94,6 @@ echo 'install universal-ctags done'
 echo "set -o vi" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
 echo 'eval "$(fzf --bash)"' >> ~/.bashrc
-
-# clone dotfiles
-mkdir -p ~/ruizhao/workspace
-cd ~/ruizhao/workspace 
-git clone https://github.com/ruizhaogit/dotfiles
 
 ## kmonad
 # https://github.com/kmonad/kmonad/releases
