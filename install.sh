@@ -120,7 +120,7 @@ if sudo apt update && sudo apt install -y bear; then
     echo "bear installed successfully via apt."
 else
     echo "apt install failed. Proceeding to install from other pkg managers..."
-    sudo snap install security-bear
+    sudo snap install bear --classic
 fi
 
 ## use snap to install pkgs
@@ -128,7 +128,7 @@ fi
 # sudo snap install tmux --classic
 # sudo snap install ccls --classic
 # sudo snap install bear --classic
-# sudo snap install security-bear
+
 ## use pacman to install pkgs
 # sudo pacman -S ripgrep
 # sudo pacman -S tmux
