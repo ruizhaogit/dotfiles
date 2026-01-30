@@ -43,9 +43,9 @@ if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     # sudo apt install tmux --classic
     # sudo apt install bear --classic
     sudo pacman -S ripgrep
+    sudo pacman -S tmux
     sudo pacman -S ccls
     sudo pacman -S bear
-    sudo pacman -S tmux
 else
     sudo apt install ripgrep -y
     sudo apt install ccls -y
