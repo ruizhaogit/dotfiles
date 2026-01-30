@@ -39,13 +39,13 @@ if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     # curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
     # tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
     # sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
-    # sudo snap install ccls --classic
-    # sudo apt install tmux --classic
-    # sudo apt install bear --classic
     sudo pacman -S ripgrep
     sudo pacman -S tmux
     sudo pacman -S ccls
     sudo pacman -S bear
+    # sudo snap install ccls --classic
+    # sudo apt install tmux --classic
+    # sudo apt install bear --classic
 else
     sudo apt install ripgrep -y
     sudo apt install ccls -y
