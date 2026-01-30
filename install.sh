@@ -89,7 +89,11 @@ echo 'install vim plugins done'
 
 # install universal-ctags
 echo 'install universal-ctags'
-git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
+# git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
+cd ~/ruizhao/workspace
+curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
+unzip ctags.zip
+mv ctags-master ctags
 cd ~/ruizhao/workspace/ctags
 ./autogen.sh
 ./configure --prefix=/usr/local
