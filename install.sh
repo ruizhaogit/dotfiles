@@ -8,7 +8,7 @@ read -p "Overwrite /etc/apt/sources.list with Aliyun Jammy sources? (y/n): " con
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "Backing up to /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-    # 3. Use 'tee' to overwrite the file with the Aliyun block
+    # Use 'tee' to overwrite the file with the Aliyun block
     echo "Writing new sources..."
     sudo tee /etc/apt/sources.list > /dev/null <<EOF
 deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
