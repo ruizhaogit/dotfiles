@@ -2,19 +2,21 @@
 
 # set -e
 
-# Ask for confirmation
 read -p "Do you want to change the apt source to Aliyun? (y/n): " confirm
+
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "Creating backup at /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-    # looks for http(s)://[ANYTHING]/ubuntu and changes it to https://mirrors.aliyun.com
+    # 3. Use regex to find ANY current mirror and replace with Aliyun/ubuntu
+    # Matches: http(s)://[any-domain-here]/ubuntu
+    # Replaces with: https://mirrors.aliyun.com/ubuntu
     echo "Detecting current URLs and replacing with Aliyun..."
-    sudo sed -i -E 's|https?://[^/]+/ubuntu|https://mirrors.aliyun.com/ubuntu|g' /etc/apt/sources.list
+    sudo sed -i -E 's@https?://[^/]+/ubuntu@https://mirrors.aliyun.com' /etc/apt/sources.list
     echo "Running sudo apt update..."
     sudo apt update
-    echo "Finished! Your sources are now pointing to Aliyun."
+    echo "Success! Sources updated to Aliyun."
 else
-    echo "Operation cancelled. No changes made."
+    echo "Operation cancelled."
 fi
 
 # clone dotfiles
