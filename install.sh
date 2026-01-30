@@ -38,6 +38,7 @@ mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
 # git clone https://github.com/ruizhaogit/dotfiles
 rm -rf dotfiles-main
+rm -rf dotfiles
 curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
 unzip dotfiles.zip
 mv dotfiles-main dotfiles
