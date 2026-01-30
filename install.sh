@@ -174,7 +174,7 @@ echo 'install pkgs done'
 curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
 # download tmux plugin manager
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-curl -fLo ~/.tmux/plugins/tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
+curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
 cd ~/.tmux/plugins/
 unzip tpm.zip
 mv tpm-master tpm
