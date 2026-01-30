@@ -177,9 +177,9 @@ curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/re
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
 cd ~/.tmux/plugins/
-unzip tpm.zip
 rm -rf tpm-master
 rm -rf tpm
+unzip tpm.zip
 mv tpm-master tpm
 # If this fails, the script continues because 'true' always succeeds
 ~/.tmux/plugins/tpm/bin/install_plugins || true
@@ -211,9 +211,9 @@ echo 'install universal-ctags'
 # git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
 cd ~/ruizhao/workspace
 curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
-unzip ctags.zip
 rm -rf ctags-master
 rm -rf ctags
+unzip ctags.zip
 mv ctags-master ctags
 cd ~/ruizhao/workspace/ctags
 ./autogen.sh
@@ -249,9 +249,9 @@ echo 'install fzf'
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~
 curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-unzip .fzf.zip
 rm -rf fzf-master
 rm -rf .fzf
+unzip .fzf.zip
 mv fzf-master .fzf
 ~/.fzf/install --all
 echo 'install fzf done'
