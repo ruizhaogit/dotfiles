@@ -2,21 +2,35 @@
 
 # set -e
 
-read -p "Do you want to change the apt source to Aliyun? (y/n): " confirm
+# Confirmation (Works even via curl pipe)
+read -p "Overwrite /etc/apt/sources.list with Aliyun Jammy sources? (y/n): " confirm < /dev/tty
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    echo "Creating backup at /etc/apt/sources.list.bak..."
+    echo "Backing up to /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-    # 3. Use regex to find ANY current mirror and replace with Aliyun/ubuntu
-    # Matches: http(s)://[any-domain-here]/ubuntu
-    # Replaces with: https://mirrors.aliyun.com/ubuntu
-    echo "Detecting current URLs and replacing with Aliyun..."
-    sudo sed -i -E 's@https?://[^/]+/ubuntu@https://mirrors.aliyun.com/ubuntu' /etc/apt/sources.list
-    echo "Running sudo apt update..."
+    # 3. Use 'tee' to overwrite the file with the Aliyun block
+    echo "Writing new sources..."
+    sudo tee /etc/apt/sources.list > /dev/null <<EOF
+deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+
+deb https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+EOF
+    echo "Running apt update..."
     sudo apt update
-    echo "Success! Sources updated to Aliyun."
+    echo "Sources successfully updated to Aliyun Jammy."
 else
-    echo "Operation cancelled."
+    echo "Using the default apt sources."
 fi
 
 # clone dotfiles
