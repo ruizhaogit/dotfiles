@@ -9,7 +9,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     # looks for http(s)://[ANYTHING]/ubuntu and changes it to https://mirrors.aliyun.com
     echo "Detecting current URLs and replacing with Aliyun..."
-    sudo sed -i -E 's|https?://[^/]+/ubuntu|https://mirrors.aliyun.com|g' /etc/apt/sources.list
+    sudo sed -i -E 's|https?://[^/]+/ubuntu|https://mirrors.aliyun.com/ubuntu|g' /etc/apt/sources.list
     echo "Running sudo apt update..."
     sudo apt update
     echo "Finished! Your sources are now pointing to Aliyun."
