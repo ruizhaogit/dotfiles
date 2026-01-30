@@ -44,6 +44,7 @@ PACKAGES=(
     "rsync"
     "curl"
     "unzip"
+    "snapd"
 )
 
 # Array to store packages that actually need installing
