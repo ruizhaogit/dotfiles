@@ -58,8 +58,9 @@ if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     # sudo pacman -S ccls
     # sudo pacman -S bear
     # sudo snap install ccls --classic
-    # sudo apt install tmux --classic
-    # sudo apt install bear --classic
+    # sudo snap install tmux --classic
+    # sudo snap install bear --classic
+    sudo snap install security-bear
 else
     sudo apt install ripgrep -y
     sudo apt install ccls -y
