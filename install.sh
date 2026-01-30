@@ -7,7 +7,7 @@ mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
 # git clone https://github.com/ruizhaogit/dotfiles
 curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
-unzip -o dotfiles.zip
+unzip dotfiles.zip
 mv dotfiles-main dotfiles
 
 # Check architecture
@@ -144,7 +144,7 @@ curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/re
 # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -fLo ~/.tmux/plugins/tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
 cd ~/.tmux/plugins/
-unzip -o tpm.zip
+unzip tpm.zip
 mv tpm-master tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
@@ -175,7 +175,7 @@ echo 'install universal-ctags'
 # git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
 cd ~/ruizhao/workspace
 curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
-unzip -o ctags.zip
+unzip ctags.zip
 mv ctags-master ctags
 cd ~/ruizhao/workspace/ctags
 ./autogen.sh
@@ -211,7 +211,7 @@ echo 'install fzf'
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~
 curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-unzip -o .fzf.zip
+unzip .fzf.zip
 mv fzf-master .fzf
 ~/.fzf/install --all
 echo 'install fzf done'
