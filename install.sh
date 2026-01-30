@@ -2,25 +2,20 @@
 
 # set -e
 
-# Prompt the user for confirmation
+# Ask for confirmation
 read -p "Do you want to change the apt source to Aliyun? (y/n): " confirm
-
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    echo "Backing up original sources.list..."
+    echo "Creating backup at /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-
-    echo "Updating sources to mirrors.aliyun.com..."
-    # Replace standard and security mirrors with Aliyun
-    sudo sed -i 's@http://archive.ubuntu.com@https://mirrors.aliyun.com@g' /etc/apt/sources.list
-    sudo sed -i 's@http://security.ubuntu.com@https://mirrors.aliyun.com@g' /etc/apt/sources.list
-
-    echo "Refreshing package index..."
+    # looks for http(s)://[ANYTHING]/ubuntu and changes it to https://mirrors.aliyun.com
+    echo "Detecting current URLs and replacing with Aliyun..."
+    sudo sed -i -E 's|https?://[^/]+/ubuntu|https://mirrors.aliyun.com|g' /etc/apt/sources.list
+    echo "Running sudo apt update..."
     sudo apt update
-    echo "Done!"
+    echo "Finished! Your sources are now pointing to Aliyun."
 else
-    echo "Operation cancelled."
+    echo "Operation cancelled. No changes made."
 fi
-
 
 # clone dotfiles
 mkdir -p ~/ruizhao/workspace
