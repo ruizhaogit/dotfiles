@@ -53,15 +53,15 @@ if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     cd ccls-0.20250815.1/
     cmake -S. -BRelease
     cmake --build Release --target install
-    # sudo pacman -S ripgrep
-    # sudo pacman -S tmux
-    # sudo pacman -S ccls
-    # sudo pacman -S bear
     # sudo snap install ripgrep --classic
     # sudo snap install tmux --classic
     # sudo snap install ccls --classic
     # sudo snap install bear --classic
     sudo snap install security-bear
+    # sudo pacman -S ripgrep
+    # sudo pacman -S tmux
+    # sudo pacman -S ccls
+    # sudo pacman -S bear
 else
     sudo apt install ripgrep -y
     sudo apt install ccls -y
