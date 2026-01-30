@@ -179,7 +179,8 @@ curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/
 cd ~/.tmux/plugins/
 unzip tpm.zip
 mv tpm-master tpm
-~/.tmux/plugins/tpm/bin/install_plugins
+# If this fails, the script continues because 'true' always succeeds
+~/.tmux/plugins/tpm/bin/install_plugins || true
 
 ## build vim from source
 echo 'build vim from source'
