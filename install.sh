@@ -10,11 +10,11 @@ sudo apt install software-properties-common -y
 sudo apt install libncurses-dev -y
 sudo apt install autoconf pkg-config -y
 sudo apt install make build-essential -y
+sudo apt install git -y
+sudo apt install rsync -y
 sudo apt install ripgrep -y
 sudo apt install ccls -y
 sudo apt install bear -y
-sudo apt install rsync -y
-sudo apt install git -y
 sudo apt install tmux -y
 python -m pip install --upgrade trzsz
 echo 'apt install pkgs done'
