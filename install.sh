@@ -143,10 +143,20 @@ git config --global merge.tool fugitive
 git config --global mergetool.keepBackup false
 
 # install nvm for coc and gemini 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+cd ~/ruizhao/workspace
+curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
+tar -xvzf ~/ruizhao/workspace/nvm.tar.gz
+cd ~/ruizhao/workspace/nvm-0.40.3
+cp -r ~/ruizhao/workspace/nvm-0.40.3 ~/.nvm
+cd ~/.nvm
+\. ~/.nvm/nvm.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' >> ~/.bashrc
+echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.bashrc
 nvm install 20.18.1
 nvm use 20.18.1
 npm install -g @google/gemini-cli
