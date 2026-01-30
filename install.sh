@@ -186,7 +186,7 @@ echo 'install universal-ctags done'
 # update ~/.bashrc
 echo "set -o vi" >> ~/.bashrc
 echo "export TERM=xterm-256color" >> ~/.bashrc
-# echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+echo 'eval "$(fzf --bash)"' >> ~/.bashrc
 
 ## kmonad
 # https://github.com/kmonad/kmonad/releases
