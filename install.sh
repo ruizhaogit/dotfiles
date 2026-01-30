@@ -42,6 +42,8 @@ PACKAGES=(
     "build-essential"
     "git"
     "rsync"
+    "curl"
+    "unzip"
 )
 
 # Array to store packages that actually need installing
