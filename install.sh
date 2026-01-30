@@ -11,7 +11,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # Matches: http(s)://[any-domain-here]/ubuntu
     # Replaces with: https://mirrors.aliyun.com/ubuntu
     echo "Detecting current URLs and replacing with Aliyun..."
-    sudo sed -i -E 's@https?://[^/]+/ubuntu@https://mirrors.aliyun.com' /etc/apt/sources.list
+    sudo sed -i -E 's@https?://[^/]+/ubuntu@https://mirrors.aliyun.com/ubuntu' /etc/apt/sources.list
     echo "Running sudo apt update..."
     sudo apt update
     echo "Success! Sources updated to Aliyun."
