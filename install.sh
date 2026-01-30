@@ -5,7 +5,9 @@
 # clone dotfiles
 mkdir -p ~/ruizhao/workspace
 cd ~/ruizhao/workspace 
-git clone https://github.com/ruizhaogit/dotfiles
+# git clone https://github.com/ruizhaogit/dotfiles
+curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
+unzip dotfiles.zip
 
 # Check architecture
 ARCH=$(uname -m)
