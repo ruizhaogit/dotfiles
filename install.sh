@@ -33,16 +33,30 @@ sudo apt install rsync -y
 python -m pip install --upgrade trzsz
 
 if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
-    # # install ripgrep
-    # mkdir -p ~/ruizhao/workspace/ripgrep
-    # cd ~/ruizhao/workspace/ripgrep
-    # curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
-    # tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
-    # sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
-    sudo pacman -S ripgrep
-    sudo pacman -S tmux
-    sudo pacman -S ccls
-    sudo pacman -S bear
+    # install ripgrep
+    mkdir -p ~/ruizhao/workspace/ripgrep
+    cd ~/ruizhao/workspace/ripgrep
+    curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
+    tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
+    sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
+    # install tmux
+    cd ~/ruizhao/workspace
+    curl -fLO https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
+    tar -xvzf tmux-3.6a.tar.gz
+    cd tmux-3.6a/
+    ./configure && make
+    sudo make install
+    # install ccls
+    cd ~/ruizhao/workspace
+    curl -fLO https://github.com/MaskRay/ccls/archive/refs/tags/0.20250815.1.tar.gz
+    tar -xvzf 0.20250815.1.tar.gz
+    cd ccls-0.20250815.1/
+    cmake -S. -BRelease
+    cmake --build Release --target install
+    # sudo pacman -S ripgrep
+    # sudo pacman -S tmux
+    # sudo pacman -S ccls
+    # sudo pacman -S bear
     # sudo snap install ccls --classic
     # sudo apt install tmux --classic
     # sudo apt install bear --classic
