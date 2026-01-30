@@ -178,6 +178,8 @@ curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/re
 curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
 cd ~/.tmux/plugins/
 unzip tpm.zip
+rm -rf tpm-master
+rm -rf tpm
 mv tpm-master tpm
 # If this fails, the script continues because 'true' always succeeds
 ~/.tmux/plugins/tpm/bin/install_plugins || true
