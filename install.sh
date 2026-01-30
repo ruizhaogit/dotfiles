@@ -22,14 +22,53 @@ fi
 
 ## apt install pkgs
 echo 'install pkgs'
-sudo apt update
-sudo apt install python3.10-dev -y
-sudo apt install software-properties-common -y
-sudo apt install libncurses-dev -y
-sudo apt install autoconf pkg-config -y
-sudo apt install make build-essential -y
-sudo apt install git -y
-sudo apt install rsync -y
+# sudo apt update
+# sudo apt install python3.10-dev -y
+# sudo apt install software-properties-common -y
+# sudo apt install libncurses-dev -y
+# sudo apt install autoconf pkg-config -y
+# sudo apt install make build-essential -y
+# sudo apt install git -y
+# sudo apt install rsync -y
+
+# List of packages to check
+PACKAGES=(
+    "python3.10-dev"
+    "software-properties-common"
+    "libncurses-dev"
+    "autoconf"
+    "pkg-config"
+    "make"
+    "build-essential"
+    "git"
+    "rsync"
+)
+
+# Array to store packages that actually need installing
+TO_INSTALL=()
+
+echo "Checking package status..."
+
+for pkg in "${PACKAGES[@]}"; do
+    if dpkg -s "$pkg" &>/dev/null; then
+        echo "[✓] $pkg is already installed."
+    else
+        echo "[ ] $pkg is missing."
+        TO_INSTALL+=("$pkg")
+    fi
+done
+
+# If the list of packages to install is not empty
+if [ ${#TO_INSTALL[@]} -ne 0 ]; then
+    echo "------------------------------------------"
+    echo "Installing missing packages: ${TO_INSTALL[*]}"
+    sudo apt update
+    sudo apt install -y "${TO_INSTALL[@]}"
+else
+    echo "------------------------------------------"
+    echo "All dependencies are already satisfied."
+fi
+
 python -m pip install --upgrade trzsz
 
 if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
