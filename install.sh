@@ -209,9 +209,9 @@ echo 'install kmonad done'
 echo 'install fzf'
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~
-curl -fLo ~/fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-unzip fzf.zip
-mv fzf-master .fzf
+curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
+unzip .fzf.zip
+mv .fzf-master .fzf
 ~/.fzf/install --all
 echo 'install fzf done'
 
