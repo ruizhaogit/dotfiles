@@ -58,7 +58,11 @@ echo 'install pkgs done'
 # download .tmux.conf
 curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
 # download tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+curl -fLo ~/.tmux/plugins/tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
+cd ~/.tmux/plugins/
+unzip tpm.zip
+mv tpm-master tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
 ## build vim from source
