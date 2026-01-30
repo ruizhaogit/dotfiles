@@ -212,6 +212,8 @@ echo 'install universal-ctags'
 cd ~/ruizhao/workspace
 curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
 unzip ctags.zip
+rm -rf ctags-master
+rm -rf ctags
 mv ctags-master ctags
 cd ~/ruizhao/workspace/ctags
 ./autogen.sh
@@ -248,6 +250,8 @@ echo 'install fzf'
 cd ~
 curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
 unzip .fzf.zip
+rm -rf fzf-master
+rm -rf .fzf
 mv fzf-master .fzf
 ~/.fzf/install --all
 echo 'install fzf done'
