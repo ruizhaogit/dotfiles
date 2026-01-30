@@ -105,7 +105,7 @@ else
     echo "All dependencies are already satisfied."
 fi
 
-python -m pip install --upgrade trzsz
+python3 -m pip install --upgrade trzsz
 
 echo "Attempting to install ripgrep via apt..."
 if sudo apt update && sudo apt install -y ripgrep; then
