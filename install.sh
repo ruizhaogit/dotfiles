@@ -2,6 +2,22 @@
 
 set -e
 
+# Check if the command exists before running it
+if command -v lsb_release >/dev/null 2>&1; then
+    VERSION=$(lsb_release -sr)
+    echo "Ubuntu version: $VERSION"
+else
+    echo "lsb_release command not found. Skipping..."
+fi
+
+# Check architecture
+ARCH=$(uname -m)
+if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+    echo "System is ARM ($ARCH)"
+else
+    echo "System is not ARM ($ARCH)"
+fi
+
 # Confirmation (Works even via curl pipe)
 read -p "Overwrite /etc/apt/sources.list with Aliyun Jammy sources? (y/n): " confirm < /dev/tty
 
@@ -42,16 +58,6 @@ rm -rf dotfiles
 curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
 unzip dotfiles.zip
 mv dotfiles-main dotfiles
-
-# Check architecture
-ARCH=$(uname -m)
-if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
-    echo "System is ARM ($ARCH)"
-    IS_ARM=true
-else
-    echo "System is not ARM ($ARCH)"
-    IS_ARM=false
-fi
 
 ## apt install pkgs
 echo 'install pkgs'
