@@ -13,9 +13,9 @@ fi
 # Check architecture
 ARCH=$(uname -m)
 if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
-    echo "System is ARM ($ARCH)"
+    echo "System is $ARCH"
 else
-    echo "System is ($ARCH)"
+    echo "System is $ARCH"
 fi
 
 # Confirmation (Works even via curl pipe)
