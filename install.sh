@@ -19,12 +19,12 @@ else
 fi
 
 # Confirmation (Works even via curl pipe)
-read -p "Overwrite /etc/apt/sources.list with Aliyun Jammy sources? (y/n): " confirm < /dev/tty
+read -p "Overwrite /etc/apt/sources.list with aliyun Jammy sources? (y/n): " confirm < /dev/tty
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "Backing up to /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-    # Use 'tee' to overwrite the file with the Aliyun block
+    # Use 'tee' to overwrite the file with the aliyun block
     echo "Writing new sources..."
     sudo tee /etc/apt/sources.list > /dev/null <<EOF
 deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
@@ -44,7 +44,7 @@ deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted unive
 EOF
     echo "Running apt update..."
     sudo apt update
-    echo "Sources successfully updated to Aliyun Jammy."
+    echo "Sources successfully updated to aliyun Jammy."
 else
     echo "Using the default apt sources."
 fi
