@@ -50,16 +50,6 @@ else
     echo "Using the default apt sources."
 fi
 
-# clone dotfiles
-mkdir -p ~/ruizhao/workspace
-cd ~/ruizhao/workspace 
-# git clone https://github.com/ruizhaogit/dotfiles
-rm -rf dotfiles-main
-rm -rf dotfiles
-curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
-unzip dotfiles.zip
-mv dotfiles-main dotfiles
-
 ## apt install pkgs
 echo 'install pkgs'
 # sudo apt update
@@ -176,6 +166,16 @@ fi
 # sudo pacman -S bear
 
 echo 'install pkgs done'
+
+# clone dotfiles
+mkdir -p ~/ruizhao/workspace
+cd ~/ruizhao/workspace 
+# git clone https://github.com/ruizhaogit/dotfiles
+rm -rf dotfiles-main
+rm -rf dotfiles
+curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
+unzip dotfiles.zip
+mv dotfiles-main dotfiles
 
 ## tmux
 # download .tmux.conf
