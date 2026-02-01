@@ -64,6 +64,7 @@ echo 'install pkgs'
 # List of packages to check
 PACKAGES=(
     "python3.10-dev"
+    "python3-pip"
     "software-properties-common"
     "libncurses-dev"
     "autoconf"
