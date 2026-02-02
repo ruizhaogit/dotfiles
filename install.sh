@@ -97,7 +97,6 @@ PACKAGES=(
     "ripgrep"
     "ccls"
     "bear"
-    "aria2"
 )
 
 # Array to store packages that actually need installing
