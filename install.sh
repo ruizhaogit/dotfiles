@@ -122,8 +122,10 @@ fi
 
 python3 -m pip install --upgrade trzsz
 
+sudo apt update
+
 echo "Attempting to install ripgrep via apt..."
-if sudo apt update && sudo apt install -y ripgrep; then
+if sudo apt install -y ripgrep; then
     echo "ripgrep installed successfully via apt."
 else
     echo "apt install failed. Proceeding to download the binary..."
@@ -136,7 +138,7 @@ else
 fi
 
 echo "Attempting to install tmux via apt..."
-if sudo apt update && sudo apt install -y tmux; then
+if sudo apt install -y tmux; then
     echo "tmux installed successfully via apt."
 else
     echo "apt install failed. Proceeding to build from source..."
@@ -150,7 +152,7 @@ else
 fi
 
 echo "Attempting to install ccls via apt..."
-if sudo apt update && sudo apt install -y ccls; then
+if sudo apt install -y ccls; then
     echo "ccls installed successfully via apt."
 else
     echo "apt install failed. Proceeding to build from source..."
@@ -164,7 +166,7 @@ else
 fi
 
 echo "Attempting to install bear via apt..."
-if sudo apt update && sudo apt install -y bear; then
+if sudo apt install -y bear; then
     echo "bear installed successfully via apt."
 else
     echo "apt install failed. Proceeding to install from other pkg managers..."
