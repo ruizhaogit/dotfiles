@@ -234,7 +234,10 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     unzip tpm.zip
     mv tpm-master tpm
     # If this fails, the script continues because 'true' always succeeds
-    ~/.tmux/plugins/tpm/bin/install_plugins || true
+    DIR="$HOME/.tmux/plugins/tmux-continuum"
+    if [ ! -d "$DIR" ]; then
+        ~/.tmux/plugins/tpm/bin/install_plugins || true
+    fi
 fi
 
 read -p "Download build vim and install plugins? (y/n): " confirm < /dev/tty
