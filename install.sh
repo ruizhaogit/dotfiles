@@ -351,6 +351,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     nvm use 20.18.1
 else
     echo "skip"
+fi
 
 read -p "Install gemini? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
