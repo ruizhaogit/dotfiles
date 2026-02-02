@@ -181,8 +181,12 @@ else
     echo "All dependencies are already satisfied."
 fi
 
-python3 -m pip install --upgrade trzsz
-
+read -p "Install trzsz? (y/n): " confirm < /dev/tty
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    python3 -m pip install --upgrade trzsz
+else
+    echo "skip"
+fi
 
 echo 'install pkgs done'
 
