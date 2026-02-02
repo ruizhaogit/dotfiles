@@ -129,7 +129,7 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
     #     sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
     # else
-    #     echo "skip"
+    #     true
     # fi
     #
     # read -p "Build tmux? (y/n): " confirm < /dev/tty
@@ -142,7 +142,7 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     ./configure && make
     #     sudo make install
     # else
-    #     echo "skip"
+    #     true
     # fi
     #
     # read -p "Build ccls? (y/n): " confirm < /dev/tty
@@ -155,14 +155,14 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     cmake -S. -BRelease
     #     cmake --build Release --target install
     # else
-    #     echo "skip"
+    #     true
     # fi
     #
     # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
     # if [[ "$confirm" =~ ^[Yy]$ ]]; then
     #     sudo snap install bear --classic
     # else
-    #     echo "skip"
+    #     true
     # fi
 
     ## use snap to install pkgs
@@ -185,7 +185,7 @@ read -p "Install trzsz? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     python3 -m pip install --upgrade trzsz
 else
-    echo "skip"
+    true
 fi
 
 echo 'install pkgs done'
@@ -202,7 +202,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     unzip dotfiles.zip
     mv dotfiles-main dotfiles
 else
-    echo "skip"
+    true
 fi
 
 read -p "Download tmux conf and plugins? (y/n): " confirm < /dev/tty
@@ -221,7 +221,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # If this fails, the script continues because 'true' always succeeds
     ~/.tmux/plugins/tpm/bin/install_plugins || true
 else
-    echo "skip"
+    true
 fi
 
 read -p "Download build vim and install plugins? (y/n): " confirm < /dev/tty
@@ -248,7 +248,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     vim -es -u ~/.vimrc +'PlugInstall --sync' +qa < /dev/null || true
     echo 'install vim plugins done'
 else
-    echo "skip"
+    true
 fi
 
 read -p "Install universal-ctags? (y/n): " confirm < /dev/tty
@@ -269,7 +269,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     sudo make install
     echo 'install universal-ctags done'
 else
-    echo "skip"
+    true
 fi
 
 read -p "Update bashrc? (y/n): " confirm < /dev/tty
@@ -279,7 +279,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "export TERM=xterm-256color" >> ~/.bashrc
     # echo 'eval "$(fzf --bash)"' >> ~/.bashrc
 else
-    echo "skip"
+    true
 fi
 
 read -p "Install kmonad? (y/n): " confirm < /dev/tty
@@ -301,7 +301,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/system/kmonad.service
     echo 'install kmonad done'
 else
-    echo "skip"
+    true
 fi
 
 read -p "Install fzf? (y/n): " confirm < /dev/tty
@@ -318,7 +318,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ~/.fzf/install --all
     echo 'install fzf done'
 else
-    echo "skip"
+    true
 fi
 
 # git config
@@ -350,12 +350,12 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     nvm install 20.18.1
     nvm use 20.18.1
 else
-    echo "skip"
+    true
 fi
 
 read -p "Install gemini? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     npm install -g @google/gemini-cli
 else
-    echo "skip"
+    true
 fi
