@@ -215,7 +215,12 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
     # download tmux plugin manager
     # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
+    FILE="~/.tmux/plugins/tpm.zip"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
+    else
+        true
+    fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/.tmux/plugins -o tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
     cd ~/.tmux/plugins/
     rm -rf tpm-master
@@ -232,7 +237,12 @@ read -p "Download build vim and install plugins? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ## build vim from source
     echo 'build vim from source'
-    curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
+    FILE="~/ruizhao/workspace/vim.tar.gz"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
+    else
+        true
+    fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o vim.tar.gz https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz
     cd ~/ruizhao/workspace
     tar -xvzf ~/ruizhao/workspace/vim.tar.gz
@@ -262,7 +272,12 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo 'install universal-ctags'
     # git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
     cd ~/ruizhao/workspace
-    curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
+    FILE="~/ruizhao/workspace/ctags.zip"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
+    else
+        true
+    fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
     rm -rf ctags-master
     rm -rf ctags
@@ -320,8 +335,13 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo 'install fzf'
     # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     cd ~
-    curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
+    FILE="~/.fzf.zip"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
+        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
+    else
+        true
+    fi
     rm -rf fzf-master
     rm -rf .fzf
     unzip .fzf.zip
@@ -346,8 +366,13 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # install nvm for coc and gemini 
     # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     cd ~/ruizhao/workspace
-    curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
+    FILE="~/ruizhao/workspace/nvm.tar.gz"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
+        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
+    else
+        true
+    fi
     tar -xvzf ~/ruizhao/workspace/nvm.tar.gz
     cd ~/ruizhao/workspace/nvm-0.40.3
     cp -r ~/ruizhao/workspace/nvm-0.40.3 ~/.nvm
