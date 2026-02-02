@@ -209,8 +209,8 @@ fi
 
 read -p "Use scp to copy files? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    read -p "Enter Remote IP Address: " remote_ip
-    read -p "Enter Username: " username
+    read -p "Enter Remote IP Address: " remote_ip < /dev/tty
+    read -p "Enter Username: " username < /dev/tty
     scp "$username@$remote_ip:~/.tmux/plugins/tpm.zip ~/.tmux/plugins"
     scp "$username@$remote_ip:~/ruizhao/workspace/vim.tar.gz ~/ruizhao/workspace"
     scp "$username@$remote_ip:~/ruizhao/workspace/ctags.zip ~/ruizhao/workspace"
