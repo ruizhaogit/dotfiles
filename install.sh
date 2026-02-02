@@ -227,8 +227,13 @@ read -p "Download tmux conf and plugins? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ## tmux
     # download .tmux.conf
-    curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
+    FILE="~/.tmux.conf"
+    if [ ! -f "$FILE" ]; then
+        curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
+        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
+    else
+        true
+    fi
     # download tmux plugin manager
     # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     FILE="~/.tmux/plugins/tpm.zip"
