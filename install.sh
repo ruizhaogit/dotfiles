@@ -202,14 +202,14 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     read -p "Enter Username: " username < /dev/tty
     echo "start copy"
     cd ~
-    rsync -avzR "$username@$remote_ip":/.tmux/plugins/tpm.zip \
-    :/.tmux/plugins/tmux-continuum \
-    :/.tmux/plugins/tmux-resurrect \
-    :/.vimrc \
-    :/.vim/autoload/plug.vim \
-    :/.vim/coc-settings.json \
-    :/.vim/plugins \
-    :/.fzf.zip \
+    rsync -avzR "$username@$remote_ip":~/.tmux/plugins/tpm.zip \
+    :~/.tmux/plugins/tmux-continuum \
+    :~/.tmux/plugins/tmux-resurrect \
+    :~/.vimrc \
+    :~/.vim/autoload/plug.vim \
+    :~/.vim/coc-settings.json \
+    :~/.vim/plugins \
+    :~/.fzf.zip \
     :~/ruizhao/workspace/vim.tar.gz \
     :~/ruizhao/workspace/ctags.zip \
     :~/ruizhao/workspace/nvm.tar.gz \
