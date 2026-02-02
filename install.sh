@@ -200,7 +200,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     rm -rf dotfiles-main
     rm -rf dotfiles
     # curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
-    aria2c -d ~/ruizhao/workspace -o dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
     unzip dotfiles.zip
     mv dotfiles-main dotfiles
 else
@@ -212,11 +212,11 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ## tmux
     # download .tmux.conf
     # curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
-    aria2c -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
     # download tmux plugin manager
     # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     # curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
-    aria2c -d ~/.tmux/plugins -o tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/.tmux/plugins -o tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
     cd ~/.tmux/plugins/
     rm -rf tpm-master
     rm -rf tpm
@@ -233,7 +233,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ## build vim from source
     echo 'build vim from source'
     # curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
-    aria2c -d ~/ruizhao/workspace -o vim.tar.gz https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o vim.tar.gz https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz
     cd ~/ruizhao/workspace
     tar -xvzf ~/ruizhao/workspace/vim.tar.gz
     cd ~/ruizhao/workspace/vim-9.1.2077
@@ -263,7 +263,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # git clone https://github.com/universal-ctags/ctags.git ~/ruizhao/workspace/ctags
     cd ~/ruizhao/workspace
     # curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
-    aria2c -d ~/ruizhao/workspace -o ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
     rm -rf ctags-master
     rm -rf ctags
     unzip ctags.zip
@@ -321,7 +321,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     cd ~
     # curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-    aria2c -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
     rm -rf fzf-master
     rm -rf .fzf
     unzip .fzf.zip
@@ -347,7 +347,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     cd ~/ruizhao/workspace
     # curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
-    aria2c -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
+    aria2c -x 16 -s 16 --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
     tar -xvzf ~/ruizhao/workspace/nvm.tar.gz
     cd ~/ruizhao/workspace/nvm-0.40.3
     cp -r ~/ruizhao/workspace/nvm-0.40.3 ~/.nvm
