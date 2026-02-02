@@ -353,13 +353,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     rm -rf .fzf
     unzip .fzf.zip
     mv fzf-master .fzf
-    FILE="$HOME/.fzf/bin/fzf"
-    if [ ! -f "$FILE" ]; then
-        # ~/.fzf/install --update-rc
-        true
-    else
-        ~/.fzf/install --all
-    fi
+    ~/.fzf/install --all
     echo 'install fzf done'
 fi
 
