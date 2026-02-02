@@ -251,7 +251,6 @@ else
     echo "skip"
 fi
 
-
 read -p "Install universal-ctags? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # install universal-ctags
@@ -272,7 +271,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
 else
     echo "skip"
 fi
-
 
 read -p "Update bashrc? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
