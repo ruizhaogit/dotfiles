@@ -201,7 +201,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     read -p "Enter Remote IP Address: " remote_ip < /dev/tty
     read -p "Enter Username: " username < /dev/tty
     echo "start copy"
-    mkdir -p ~/.vim/plugins
+    mkdir -p ~/.vim/plugged
     mkdir -p ~/.vim/autoload
     mkdir -p ~/.tmux/plugins
     cd ~
@@ -211,7 +211,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     :.vimrc \
     :.vim/autoload/plug.vim \
     :.vim/coc-settings.json \
-    :.vim/plugins \
+    :.vim/plugged \
     :.fzf.zip \
     :ruizhao/workspace/vim.tar.gz \
     :ruizhao/workspace/ctags.zip \
