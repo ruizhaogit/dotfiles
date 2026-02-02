@@ -19,16 +19,31 @@ else
 fi
 
 # Confirmation (Works even via curl pipe)
-read -p "Overwrite /etc/apt/sources.list with aliyun Jammy sources? (y/n): " confirm < /dev/tty
+read -p "Overwrite /etc/apt/sources.list with aliyun (x86_64) or ubuntu-ports (arm) Jammy sources? (y/n): " confirm < /dev/tty
 
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "Backing up to /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     # Use 'tee' to overwrite the file with the aliyun block
     echo "Writing new sources..."
-    # https://github.com/simdsoft/sources.list
-    # http://ports.ubuntu.com/ubuntu-ports official ubuntu source for arm
-    sudo tee /etc/apt/sources.list > /dev/null <<EOF
+    if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+        # http://ports.ubuntu.com/ubuntu-ports official ubuntu source for arm
+        sudo tee /etc/apt/sources.list > /dev/null <<EOF
+deb http://ports.ubuntu.com/ubuntu-ports/ jammy main restricted universe multiverse
+# deb-src http://ports.ubuntu.com/ubuntu-ports/ jammy main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main restricted universe multiverse
+# deb-src http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ubuntu-ports/ jammy-backports main restricted universe multiverse
+# deb-src http://ports.ubuntu.com/ubuntu-ports/ jammy-backports main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ubuntu-ports/ jammy-security main restricted universe multiverse
+# deb-src http://ports.ubuntu.com/ubuntu-ports/ jammy-security main restricted universe multiverse
+EOF
+    else
+        # https://github.com/simdsoft/sources.list
+        sudo tee /etc/apt/sources.list > /dev/null <<EOF
 deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
 deb-src https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
 
@@ -44,6 +59,7 @@ deb-src https://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted univer
 deb https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
 deb-src https://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
 EOF
+    fi
     echo "Running apt update..."
     sudo apt update
     echo "Sources successfully updated to aliyun Jammy."
