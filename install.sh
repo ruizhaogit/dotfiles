@@ -27,6 +27,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # Use 'tee' to overwrite the file with the aliyun block
     echo "Writing new sources..."
     # https://github.com/simdsoft/sources.list
+    # http://ports.ubuntu.com/ubuntu-ports official ubuntu source for arm
     sudo tee /etc/apt/sources.list > /dev/null <<EOF
 deb https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
 deb-src https://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
