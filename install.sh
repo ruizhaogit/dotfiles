@@ -292,6 +292,10 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     chmod +x kmonad
     sudo cp ./kmonad /usr/bin/kmonad
 
+    mkdir -p ~/ruizhao/workspace/dotfiles/kmonad/keymap
+    curl -fLo ~/ruizhao/workspace/dotfiles/kmonad/keymap/tutorial.kbd https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/kmonad/keymap/tutorial.kbd
+    curl -fLo ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service https://github.com/ruizhaogit/dotfiles/blob/main/kmonad/keymap/kmonad.service
+
     KBD_NAME=$(ls /dev/input/by-id | grep -- -kbd | head -n 1)
     if [ -n "$KBD_NAME" ]; then
         sed -i "4c input  (device-file \"/dev/input/by-id/${KBD_NAME}\")" ~/ruizhao/workspace/dotfiles/kmonad/keymap/tutorial.kbd
