@@ -216,7 +216,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     :ruizhao/workspace/vim.tar.gz \
     :ruizhao/workspace/ctags.zip \
     :ruizhao/workspace/nvm.tar.gz \
-    :.fzf/bin/fzf \
+    :.fzf \
     ~/
     echo "copy done"
 fi
