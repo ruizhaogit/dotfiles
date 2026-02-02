@@ -119,6 +119,63 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     echo "Installing missing packages: ${TO_INSTALL[*]}"
     sudo apt update
     sudo apt install -y "${TO_INSTALL[@]}"
+
+    # read -p "Install ripgrep binary? (y/n): " confirm < /dev/tty
+    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    #     # install ripgrep
+    #     mkdir -p ~/ruizhao/workspace/ripgrep
+    #     cd ~/ruizhao/workspace/ripgrep
+    #     curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
+    #     tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
+    #     sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
+    # else
+    #     echo "skip"
+    # fi
+    #
+    # read -p "Build tmux? (y/n): " confirm < /dev/tty
+    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    #     # install tmux
+    #     cd ~/ruizhao/workspace
+    #     curl -fLO https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
+    #     tar -xvzf tmux-3.6a.tar.gz
+    #     cd tmux-3.6a/
+    #     ./configure && make
+    #     sudo make install
+    # else
+    #     echo "skip"
+    # fi
+    #
+    # read -p "Build ccls? (y/n): " confirm < /dev/tty
+    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    #     # install ccls
+    #     cd ~/ruizhao/workspace
+    #     curl -fLO https://github.com/MaskRay/ccls/archive/refs/tags/0.20250815.1.tar.gz
+    #     tar -xvzf 0.20250815.1.tar.gz
+    #     cd ccls-0.20250815.1/
+    #     cmake -S. -BRelease
+    #     cmake --build Release --target install
+    # else
+    #     echo "skip"
+    # fi
+    #
+    # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
+    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    #     sudo snap install bear --classic
+    # else
+    #     echo "skip"
+    # fi
+
+    ## use snap to install pkgs
+    # sudo snap install ripgrep --classic
+    # sudo snap install tmux --classic
+    # sudo snap install ccls --classic
+    # sudo snap install bear --classic
+
+    ## use pacman to install pkgs
+    # sudo pacman -S ripgrep
+    # sudo pacman -S tmux
+    # sudo pacman -S ccls
+    # sudo pacman -S bear
 else
     echo "------------------------------------------"
     echo "All dependencies are already satisfied."
@@ -126,62 +183,6 @@ fi
 
 python3 -m pip install --upgrade trzsz
 
-read -p "Install ripgrep binary? (y/n): " confirm < /dev/tty
-if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    # install ripgrep
-    mkdir -p ~/ruizhao/workspace/ripgrep
-    cd ~/ruizhao/workspace/ripgrep
-    curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
-    tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
-    sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
-else
-    echo "skip"
-fi
-
-read -p "Build tmux? (y/n): " confirm < /dev/tty
-if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    # install tmux
-    cd ~/ruizhao/workspace
-    curl -fLO https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
-    tar -xvzf tmux-3.6a.tar.gz
-    cd tmux-3.6a/
-    ./configure && make
-    sudo make install
-else
-    echo "skip"
-fi
-
-read -p "Build ccls? (y/n): " confirm < /dev/tty
-if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    # install ccls
-    cd ~/ruizhao/workspace
-    curl -fLO https://github.com/MaskRay/ccls/archive/refs/tags/0.20250815.1.tar.gz
-    tar -xvzf 0.20250815.1.tar.gz
-    cd ccls-0.20250815.1/
-    cmake -S. -BRelease
-    cmake --build Release --target install
-else
-    echo "skip"
-fi
-
-read -p "Install bear via snap? (y/n): " confirm < /dev/tty
-if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    sudo snap install bear --classic
-else
-    echo "skip"
-fi
-
-## use snap to install pkgs
-# sudo snap install ripgrep --classic
-# sudo snap install tmux --classic
-# sudo snap install ccls --classic
-# sudo snap install bear --classic
-
-## use pacman to install pkgs
-# sudo pacman -S ripgrep
-# sudo pacman -S tmux
-# sudo pacman -S ccls
-# sudo pacman -S bear
 
 echo 'install pkgs done'
 
