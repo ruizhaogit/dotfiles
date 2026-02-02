@@ -261,16 +261,19 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     sudo make install
     echo 'build vim from source done'
 
-    ## vim
-    # download .vimrc
-    echo 'install vim plugins'
-    curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.vimrc"
-    # install vim plugin manager
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
-    # vim +'PlugInstall --sync' +qa
-    vim -es -u ~/.vimrc +'PlugInstall --sync' +qa < /dev/null || true
-    echo 'install vim plugins done'
+    FILE="$HOME/.vimrc"
+    if [ ! -f "$FILE" ]; then
+        ## vim
+        # download .vimrc
+        echo 'install vim plugins'
+        curl -fLo ~/.vimrc "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.vimrc"
+        # install vim plugin manager
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        curl -fLo ~/.vim/coc-settings.json --create-dirs "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/coc-settings.json"
+        # vim +'PlugInstall --sync' +qa
+        vim -es -u ~/.vimrc +'PlugInstall --sync' +qa < /dev/null || true
+        echo 'install vim plugins done'
+    fi
 fi
 
 read -p "Install universal-ctags? (y/n): " confirm < /dev/tty
