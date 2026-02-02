@@ -195,7 +195,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     mv dotfiles-main dotfiles
 fi
 
-read -p "Use scp to copy files? (y/n): " confirm < /dev/tty
+read -p "Use rsync to copy files? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "input ip and username"
     read -p "Enter Remote IP Address: " remote_ip < /dev/tty
