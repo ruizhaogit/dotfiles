@@ -160,7 +160,7 @@ set hlsearch
 " set iskeyword-=_
 
 " clear the search register
-noremap <space> :let @/=""<CR>
+noremap <silent> <space> :let @/=""<CR>
 " set cmdheight=1
 
 " set complete=.,w,b,u,t,i
@@ -550,23 +550,23 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>a  <space>a
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>e  <space>e
 " Show commands.
 " nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>c  <space>c
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>o  <space>o
 " Search workspace symbols.
 " nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent><nowait> <space>s  <space>s
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <space>j  <space>j
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <space>k  <space>k
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>p  <space>p
 
 " for ale
 let g:ale_enabled = 0 " 1 for enbale
