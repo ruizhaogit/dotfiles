@@ -209,6 +209,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-continuum ~/.tmux/plugins
     scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-resurrect ~/.tmux/plugins
     scp "$username@$remote_ip":~/.vimrc ~
+    mkdir ~/.vim/autoload
     scp "$username@$remote_ip":~/.vim/autoload/plug.vim ~/.vim/autoload
     scp "$username@$remote_ip":~/.vim/coc-settings.json ~/.vim
     scp -r "$username@$remote_ip":~/.vim/plugins ~/.vim
