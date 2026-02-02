@@ -129,8 +129,6 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
     #     tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
     #     sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
-    # else
-    #     true
     # fi
     #
     # read -p "Build tmux? (y/n): " confirm < /dev/tty
@@ -142,8 +140,6 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     cd tmux-3.6a/
     #     ./configure && make
     #     sudo make install
-    # else
-    #     true
     # fi
     #
     # read -p "Build ccls? (y/n): " confirm < /dev/tty
@@ -155,15 +151,11 @@ if [ ${#TO_INSTALL[@]} -ne 0 ]; then
     #     cd ccls-0.20250815.1/
     #     cmake -S. -BRelease
     #     cmake --build Release --target install
-    # else
-    #     true
     # fi
     #
     # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
     # if [[ "$confirm" =~ ^[Yy]$ ]]; then
     #     sudo snap install bear --classic
-    # else
-    #     true
     # fi
 
     ## use snap to install pkgs
@@ -185,8 +177,6 @@ fi
 read -p "Install trzsz? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     python3 -m pip install --upgrade trzsz
-else
-    true
 fi
 
 echo 'install pkgs done'
@@ -203,8 +193,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
     unzip dotfiles.zip
     mv dotfiles-main dotfiles
-else
-    true
 fi
 
 read -p "Use scp to copy files? (y/n): " confirm < /dev/tty
@@ -219,8 +207,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     scp "$username@$remote_ip":~/.fzf.zip ~
     scp "$username@$remote_ip":~/ruizhao/workspace/nvm.tar.gz ~/ruizhao/workspace
     echo "copy done"
-else
-    true
 fi
 
 read -p "Download tmux conf and plugins? (y/n): " confirm < /dev/tty
@@ -231,16 +217,13 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
         # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
-    else
-        true
     fi
     # download tmux plugin manager
     # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     FILE="~/.tmux/plugins/tpm.zip"
     if [ ! -f "$FILE" ]; then
+        echo "$FILE" does not exist, start downloading.
         curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
-    else
-        true
     fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/.tmux/plugins -o tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
     cd ~/.tmux/plugins/
@@ -250,8 +233,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     mv tpm-master tpm
     # If this fails, the script continues because 'true' always succeeds
     ~/.tmux/plugins/tpm/bin/install_plugins || true
-else
-    true
 fi
 
 read -p "Download build vim and install plugins? (y/n): " confirm < /dev/tty
@@ -261,8 +242,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     FILE="~/ruizhao/workspace/vim.tar.gz"
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
-    else
-        true
     fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o vim.tar.gz https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz
     cd ~/ruizhao/workspace
@@ -283,8 +262,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # vim +'PlugInstall --sync' +qa
     vim -es -u ~/.vimrc +'PlugInstall --sync' +qa < /dev/null || true
     echo 'install vim plugins done'
-else
-    true
 fi
 
 read -p "Install universal-ctags? (y/n): " confirm < /dev/tty
@@ -296,8 +273,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     FILE="~/ruizhao/workspace/ctags.zip"
     if [ ! -f "$FILE" ]; then
         curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
-    else
-        true
     fi
     # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
     rm -rf ctags-master
@@ -310,8 +285,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     make
     sudo make install
     echo 'install universal-ctags done'
-else
-    true
 fi
 
 read -p "Update bashrc? (y/n): " confirm < /dev/tty
@@ -320,8 +293,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "set -o vi" >> ~/.bashrc
     echo "export TERM=xterm-256color" >> ~/.bashrc
     # echo 'eval "$(fzf --bash)"' >> ~/.bashrc
-else
-    true
 fi
 
 read -p "Install kmonad? (y/n): " confirm < /dev/tty
@@ -346,8 +317,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
 
     sudo cp ~/ruizhao/workspace/dotfiles/kmonad/keymap/kmonad.service /etc/systemd/system/kmonad.service
     echo 'install kmonad done'
-else
-    true
 fi
 
 read -p "Install fzf? (y/n): " confirm < /dev/tty
@@ -360,8 +329,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
         # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-    else
-        true
     fi
     rm -rf fzf-master
     rm -rf .fzf
@@ -369,8 +336,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     mv fzf-master .fzf
     ~/.fzf/install --all
     echo 'install fzf done'
-else
-    true
 fi
 
 # git config
@@ -391,8 +356,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
         # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
-    else
-        true
     fi
     tar -xvzf ~/ruizhao/workspace/nvm.tar.gz
     cd ~/ruizhao/workspace/nvm-0.40.3
@@ -407,13 +370,9 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> ~/.bashrc
     nvm install 20.18.1
     nvm use 20.18.1
-else
-    true
 fi
 
 read -p "Install gemini? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     npm install -g @google/gemini-cli
-else
-    true
 fi
