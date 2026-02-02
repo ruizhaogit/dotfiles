@@ -206,6 +206,8 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     scp "$username@$remote_ip":~/ruizhao/workspace/ctags.zip ~/ruizhao/workspace
     scp "$username@$remote_ip":~/.fzf.zip ~
     scp "$username@$remote_ip":~/ruizhao/workspace/nvm.tar.gz ~/ruizhao/workspace
+    scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-continuum ~/.tmux/plugins
+    scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-resurrect ~/.tmux/plugins
     echo "copy done"
 fi
 
