@@ -201,6 +201,9 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     read -p "Enter Remote IP Address: " remote_ip < /dev/tty
     read -p "Enter Username: " username < /dev/tty
     echo "start copy"
+    mkdir -p ~/.vim/plugins
+    mkdir -p ~/.vim/autoload
+    mkdir -p ~/.tmux/plugins
     cd ~
     rsync -avzR "$username@$remote_ip":.tmux/plugins/tpm.zip \
     :.tmux/plugins/tmux-continuum \
