@@ -355,7 +355,8 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     mv fzf-master .fzf
     FILE="$HOME/.fzf/bin/fzf"
     if [ ! -f "$FILE" ]; then
-        ~/.fzf/install --update-rc
+        # ~/.fzf/install --update-rc
+        true
     else
         ~/.fzf/install --all
     fi
