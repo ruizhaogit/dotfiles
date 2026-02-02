@@ -218,7 +218,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     :ruizhao/workspace/nvm.tar.gz \
     :.fzf \
     ~/
-    sudo scp "$username@$remote_ip":~/.fzf/bin/fzf ~/.fzf/bin
+    scp "$username@$remote_ip":~/.fzf/bin/fzf ~/.fzf/bin
     echo "copy done"
 fi
 
