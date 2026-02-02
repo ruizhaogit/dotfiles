@@ -218,6 +218,8 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     :ruizhao/workspace/nvm.tar.gz \
     :.fzf \
     ~/
+    # download https://github.com/junegunn/fzf/releases/download/v0.67.0/fzf-0.67.0-linux_arm64.tar.gz
+    # sudo cp fzf /usr/bin
     sudo scp "$username@$remote_ip":~/.fzf/bin/fzf /usr/bin/
     echo "copy done"
 fi
