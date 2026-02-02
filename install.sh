@@ -98,6 +98,7 @@ PACKAGES=(
     "ccls"
     "bear"
 )
+    # "aria2"
 
 # Array to store packages that actually need installing
 TO_INSTALL=()
