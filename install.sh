@@ -208,6 +208,10 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     scp "$username@$remote_ip":~/ruizhao/workspace/nvm.tar.gz ~/ruizhao/workspace
     scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-continuum ~/.tmux/plugins
     scp -r "$username@$remote_ip":~/.tmux/plugins/tmux-resurrect ~/.tmux/plugins
+    scp "$username@$remote_ip":~/.vimrc ~
+    scp "$username@$remote_ip":~/.vim/autoload/plug.vim ~/.vim/autoload
+    scp "$username@$remote_ip":~/.vim/coc-settings.json ~/.vim
+    scp -r "$username@$remote_ip":~/.vim/plugins ~/.vim
     echo "copy done"
 fi
 
