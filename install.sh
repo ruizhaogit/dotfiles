@@ -82,7 +82,6 @@ PACKAGES=(
     "ccls"
     "bear"
 )
-    # "aria2"
 
 # Array to store packages that actually need installing
 TO_INSTALL=()
@@ -175,7 +174,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     rm -rf dotfiles-main
     rm -rf dotfiles
     curl -fLo dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o dotfiles.zip https://github.com/ruizhaogit/dotfiles/archive/refs/heads/main.zip
     unzip dotfiles.zip
     mv dotfiles-main dotfiles
 fi
@@ -216,7 +214,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     FILE="$HOME/.tmux.conf"
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/.tmux.conf "https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf"
-        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .tmux.conf https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/rc_files/.tmux.conf
     fi
     # download tmux plugin manager
     # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -225,7 +222,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
         echo "$FILE" does not exist, start downloading.
         curl -fLo ~/.tmux/plugins/tpm.zip --create-dirs https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
     fi
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/.tmux/plugins -o tpm.zip https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip
     cd ~/.tmux/plugins/
     rm -rf tpm-master
     rm -rf tpm
@@ -246,7 +242,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/ruizhao/workspace/vim.tar.gz --create-dirs "https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz"
     fi
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o vim.tar.gz https://github.com/vim/vim/archive/refs/tags/v9.1.2077.tar.gz
     cd ~/ruizhao/workspace
     tar -xvzf ~/ruizhao/workspace/vim.tar.gz
     cd ~/ruizhao/workspace/vim-9.1.2077
@@ -280,7 +275,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     if [ ! -f "$FILE" ]; then
         curl -fLo ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
     fi
-    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o ctags.zip https://github.com/universal-ctags/ctags/archive/refs/heads/master.zip
     rm -rf ctags-master
     rm -rf ctags
     unzip ctags.zip
@@ -334,7 +328,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     FILE="$HOME/.fzf.zip"
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/.fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
-        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ -o .fzf.zip https://github.com/junegunn/fzf/archive/refs/heads/master.zip
     fi
     rm -rf fzf-master
     rm -rf .fzf
@@ -364,7 +357,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     FILE="$HOME/ruizhao/workspace/nvm.tar.gz"
     if [ ! -f "$FILE" ]; then
         curl -fLo ~/ruizhao/workspace/nvm.tar.gz --create-dirs "https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz"
-        # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -d ~/ruizhao/workspace -o nvm.tar.gz https://github.com/nvm-sh/nvm/archive/refs/tags/v0.40.3.tar.gz
     fi
     tar -xvzf ~/ruizhao/workspace/nvm.tar.gz
     cd ~/ruizhao/workspace/nvm-0.40.3
