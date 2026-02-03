@@ -183,6 +183,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     :.vimrc \
     :.vim/autoload/plug.vim \
     :.vim/coc-settings.json \
+    :.config/coc \
     :.vim/plugged \
     :.fzf.zip \
     :ruizhao/workspace/vim.tar.gz \
