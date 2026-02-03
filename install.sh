@@ -393,6 +393,11 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     nvm use 20.18.1
 fi
 
+read -p "Install coc extensions? (y/n): " confirm < /dev/tty
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    vim -es -u ~/.vimrc +'CocInstall -sync coc-json coc-vimlsp coc-pyright' +qa < /dev/null || true
+fi
+
 read -p "Install gemini? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     npm install -g @google/gemini-cli
