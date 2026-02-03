@@ -141,19 +141,8 @@ read -p "Install missing pkgs? (y/n): " confirm < /dev/tty
         # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
         # if [[ "$confirm" =~ ^[Yy]$ ]]; then
         #     sudo snap install bear --classic
+        #     # sudo pacman -S bear
         # fi
-
-        ## use snap to install pkgs
-        # sudo snap install ripgrep --classic
-        # sudo snap install tmux --classic
-        # sudo snap install ccls --classic
-        # sudo snap install bear --classic
-
-        ## use pacman to install pkgs
-        # sudo pacman -S ripgrep
-        # sudo pacman -S tmux
-        # sudo pacman -S ccls
-        # sudo pacman -S bear
     else
         echo "------------------------------------------"
         echo "All dependencies are already satisfied."
