@@ -114,72 +114,73 @@ for pkg in "${PACKAGES[@]}"; do
     fi
 done
 
-# If the list of packages to install is not empty
-if [ ${#TO_INSTALL[@]} -ne 0 ]; then
-    echo "------------------------------------------"
-    echo "Installing missing packages: ${TO_INSTALL[*]}"
-    sudo apt update
-    sudo apt install -y "${TO_INSTALL[@]}"
+read -p "Install missing pkgs? (y/n): " confirm < /dev/tty
+    if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    # If the list of packages to install is not empty
+    if [ ${#TO_INSTALL[@]} -ne 0 ]; then
+        echo "------------------------------------------"
+        echo "Installing missing packages: ${TO_INSTALL[*]}"
+        sudo apt update
+        sudo apt install -y "${TO_INSTALL[@]}"
 
-    # read -p "Install ripgrep binary? (y/n): " confirm < /dev/tty
-    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    #     # install ripgrep
-    #     mkdir -p ~/ruizhao/workspace/ripgrep
-    #     cd ~/ruizhao/workspace/ripgrep
-    #     curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
-    #     tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
-    #     sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
-    # fi
-    #
-    # read -p "Build tmux? (y/n): " confirm < /dev/tty
-    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    #     # install tmux
-    #     cd ~/ruizhao/workspace
-    #     curl -fLO https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
-    #     tar -xvzf tmux-3.6a.tar.gz
-    #     cd tmux-3.6a/
-    #     ./configure && make
-    #     sudo make install
-    # fi
-    #
-    # read -p "Build ccls? (y/n): " confirm < /dev/tty
-    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    #     # install ccls
-    #     cd ~/ruizhao/workspace
-    #     curl -fLO https://github.com/MaskRay/ccls/archive/refs/tags/0.20250815.1.tar.gz
-    #     tar -xvzf 0.20250815.1.tar.gz
-    #     cd ccls-0.20250815.1/
-    #     cmake -S. -BRelease
-    #     cmake --build Release --target install
-    # fi
-    #
-    # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
-    # if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    #     sudo snap install bear --classic
-    # fi
+        # read -p "Install ripgrep binary? (y/n): " confirm < /dev/tty
+        # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        #     # install ripgrep
+        #     mkdir -p ~/ruizhao/workspace/ripgrep
+        #     cd ~/ruizhao/workspace/ripgrep
+        #     curl -fLO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz
+        #     tar -xvf ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz 
+        #     sudo mv ripgrep-15.1.0-aarch64-unknown-linux-gnu/rg /usr/local/bin/
+        # fi
+        #
+        # read -p "Build tmux? (y/n): " confirm < /dev/tty
+        # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        #     # install tmux
+        #     cd ~/ruizhao/workspace
+        #     curl -fLO https://github.com/tmux/tmux/releases/download/3.6a/tmux-3.6a.tar.gz
+        #     tar -xvzf tmux-3.6a.tar.gz
+        #     cd tmux-3.6a/
+        #     ./configure && make
+        #     sudo make install
+        # fi
+        #
+        # read -p "Build ccls? (y/n): " confirm < /dev/tty
+        # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        #     # install ccls
+        #     cd ~/ruizhao/workspace
+        #     curl -fLO https://github.com/MaskRay/ccls/archive/refs/tags/0.20250815.1.tar.gz
+        #     tar -xvzf 0.20250815.1.tar.gz
+        #     cd ccls-0.20250815.1/
+        #     cmake -S. -BRelease
+        #     cmake --build Release --target install
+        # fi
+        #
+        # read -p "Install bear via snap? (y/n): " confirm < /dev/tty
+        # if [[ "$confirm" =~ ^[Yy]$ ]]; then
+        #     sudo snap install bear --classic
+        # fi
 
-    ## use snap to install pkgs
-    # sudo snap install ripgrep --classic
-    # sudo snap install tmux --classic
-    # sudo snap install ccls --classic
-    # sudo snap install bear --classic
+        ## use snap to install pkgs
+        # sudo snap install ripgrep --classic
+        # sudo snap install tmux --classic
+        # sudo snap install ccls --classic
+        # sudo snap install bear --classic
 
-    ## use pacman to install pkgs
-    # sudo pacman -S ripgrep
-    # sudo pacman -S tmux
-    # sudo pacman -S ccls
-    # sudo pacman -S bear
-else
-    echo "------------------------------------------"
-    echo "All dependencies are already satisfied."
+        ## use pacman to install pkgs
+        # sudo pacman -S ripgrep
+        # sudo pacman -S tmux
+        # sudo pacman -S ccls
+        # sudo pacman -S bear
+    else
+        echo "------------------------------------------"
+        echo "All dependencies are already satisfied."
+    fi
 fi
 
 read -p "Install trzsz? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     python3 -m pip install --upgrade trzsz
 fi
-
-echo 'install pkgs done'
 
 read -p "Download dotfiles? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
@@ -359,14 +360,17 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo 'install fzf done'
 fi
 
-# git config
-git config --global pager.color false
-git config --global pager.show 'vim -R -'
-git config --global core.editor $(which vim)
-git config --global diff.tool vimdiff
-git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
-git config --global merge.tool fugitive
-git config --global mergetool.keepBackup false
+read -p "Config git? (y/n): " confirm < /dev/tty
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    # git config
+    git config --global pager.color false
+    git config --global pager.show 'vim -R -'
+    git config --global core.editor $(which vim)
+    git config --global diff.tool vimdiff
+    git config --global mergetool.fugitive.cmd 'vim -f -c "Gvdiffsplit!" "$MERGED"'
+    git config --global merge.tool fugitive
+    git config --global mergetool.keepBackup false
+fi
 
 read -p "Install nvm and nodejs? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
