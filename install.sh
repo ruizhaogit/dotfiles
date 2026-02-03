@@ -2,7 +2,6 @@
 
 set -e
 
-# Check if the command exists before running it
 if command -v lsb_release >/dev/null 2>&1; then
     VERSION=$(lsb_release -sr)
     echo "Ubuntu version: $VERSION"
@@ -10,7 +9,6 @@ else
     echo "lsb_release command not found. Skipping..."
 fi
 
-# Check architecture
 ARCH=$(uname -m)
 if [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
     echo "System is $ARCH"
@@ -65,16 +63,6 @@ else
     echo "Using the default apt sources."
 fi
 
-# sudo apt update
-# sudo apt install python3.10-dev -y
-# sudo apt install software-properties-common -y
-# sudo apt install libncurses-dev -y
-# sudo apt install autoconf pkg-config -y
-# sudo apt install make build-essential -y
-# sudo apt install git -y
-# sudo apt install rsync -y
-
-# List of packages to check
 PACKAGES=(
     "python3.10-dev"
     "python3-pip"
