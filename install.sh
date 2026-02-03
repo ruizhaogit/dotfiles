@@ -18,9 +18,7 @@ else
     echo "System is $ARCH"
 fi
 
-# Confirmation (Works even via curl pipe)
-read -p "Overwrite /etc/apt/sources.list with aliyun (x86_64) or ubuntu-ports (arm) Jammy sources? (y/n): " confirm < /dev/tty
-
+read -p "Overwrite /etc/apt/sources.list? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "Backing up to /etc/apt/sources.list.bak..."
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -67,8 +65,6 @@ else
     echo "Using the default apt sources."
 fi
 
-## apt install pkgs
-echo 'install pkgs'
 # sudo apt update
 # sudo apt install python3.10-dev -y
 # sudo apt install software-properties-common -y
