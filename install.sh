@@ -234,7 +234,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     fi
 fi
 
-read -p "Download build vim and install plugins? (y/n): " confirm < /dev/tty
+read -p "Download and build vim, download vimrc, and install plugins? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     ## build vim from source
     echo 'build vim from source'
