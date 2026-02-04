@@ -486,8 +486,8 @@ set updatetime=300
 set signcolumn=yes
 
 " zoom out and zoom in for diffmode
-noremap <silent><space>li :windo set wrap foldcolumn=0 signcolumn=no nonumber norelativenumber<CR>
-noremap <silent><space>lo :windo set nowrap signcolumn=yes number relativenumber<CR>
+noremap <silent><space>lo :windo set wrap foldcolumn=0 signcolumn=no nonumber norelativenumber<CR>
+noremap <silent><space>li :windo set nowrap signcolumn=yes number relativenumber<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
