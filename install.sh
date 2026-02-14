@@ -164,6 +164,10 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     python3 -m pip install --upgrade trzsz
 fi
 
+echo "Install jupytext for vim"
+pip install jupytext
+echo "Install jupytext for vim: done."
+
 read -p "Download dotfiles? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     # clone dotfiles
