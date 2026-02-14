@@ -1,6 +1,6 @@
 # curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
-set -e
+set -x -e
 
 if command -v lsb_release >/dev/null 2>&1; then
     VERSION=$(lsb_release -sr)
