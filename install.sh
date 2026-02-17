@@ -297,6 +297,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "set -o vi" >> ~/.bashrc
     echo "export TERM=xterm-256color" >> ~/.bashrc
     # echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+    echo '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' >> ~/.bashrc
 fi
 
 read -p "Install kmonad? (y/n): " confirm < /dev/tty
