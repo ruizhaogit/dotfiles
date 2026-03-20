@@ -99,11 +99,23 @@ set scrolloff=0
 " set sidescrolloff=0
 set sidescrolloff=30
 
-" turn page
-noremap <C-u> <C-b>
-
 " clear all key mappings
 " mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+
+" turn page
+" noremap <C-u> <C-b>
+
+" for smoothie scrolling
+nnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
+vnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
+nnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-B>") <CR>
+vnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-B>") <CR>
+nnoremap <unique> <C-F> <cmd>call smoothie#do("\<C-F>") <CR>
+vnoremap <unique> <C-F> <cmd>call smoothie#do("\<C-F>") <CR>
+" nnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-U>") <CR>
+" vnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-U>") <CR>
+" nnoremap <unique> <C-B> <cmd>call smoothie#do("\<C-B>") <CR>
+" vnoremap <unique> <C-B> <cmd>call smoothie#do("\<C-B>") <CR>
 
 " try to fix u undo, ctrl+r redo, caused by vim-repeat, verbose map <Plug>(RepeatUndo)
 nnoremap u u
@@ -294,6 +306,7 @@ noremap <silent><space>l/ /\(#.*\)\@<!print<CR>
 " context key binds
 " let g:context_enabled = 0 " did not work
 nnoremap <silent><nowait> <space>lc  :<C-u>ContextToggle<cr>
+" nnoremap <silent><nowait> <space>lc  :<C-u>ContextPeek<cr>
 
 " undotree
 nnoremap <silent><space>lu :UndotreeToggle<CR>
@@ -405,6 +418,7 @@ Plug 'puremourning/vimspector'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'bfrg/vim-c-cpp-modern'
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 " Plug 'tpope/vim-repeat'
 " Plug 'vim-airline/vim-airline'
@@ -524,15 +538,15 @@ nmap <silent> gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+" " Remap <C-f> and <C-b> for scroll float windows/popups.
+" if has('nvim-0.4.0') || has('patch-8.2.0750')
+"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" endif
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
