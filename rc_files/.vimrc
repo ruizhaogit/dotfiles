@@ -108,8 +108,8 @@ set sidescrolloff=30
 " for smoothie scrolling
 nnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
 vnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
-nnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-B>") <CR>
-vnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-B>") <CR>
+nnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-U>") <CR>
+vnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-U>") <CR>
 nnoremap <unique> <C-F> <cmd>call smoothie#do("\<C-F>") <CR>
 vnoremap <unique> <C-F> <cmd>call smoothie#do("\<C-F>") <CR>
 " nnoremap <unique> <C-U> <cmd>call smoothie#do("\<C-U>") <CR>
