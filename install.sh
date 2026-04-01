@@ -387,3 +387,8 @@ read -p "Install gemini? (y/n): " confirm < /dev/tty
 if [[ "$confirm" =~ ^[Yy]$ ]]; then
     npm install -g @google/gemini-cli
 fi
+
+read -p "Install claude code? (y/n): " confirm < /dev/tty
+if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    npm install -g @anthropic-ai/claude-code
+fi
