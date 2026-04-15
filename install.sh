@@ -150,6 +150,16 @@ read -p "Install missing pkgs? (y/n): " confirm < /dev/tty
                             # sudo pacman -S bear
                         fi
                         ;;
+                    "glow")
+                        read -p "Install glow via deb? (y/n): " confirm_rg < /dev/tty
+                        if [[ "$confirm_rg" =~ ^[Yy]$ ]]; then
+                            # install glow
+                            mkdir -p ~/ruizhao/workspace/glow
+                            cd ~/ruizhao/workspace/glow
+                            curl -fLO glow.deb https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_amd64.deb
+                            sudo dpkg -i glow_2.1.2_amd64.deb
+                        fi
+                        ;;
                 esac
             done
         fi
