@@ -81,6 +81,7 @@ PACKAGES=(
     "ripgrep"
     "ccls"
     "bear"
+    "glow"
 )
 
 # Array to store packages that actually need installing
