@@ -156,8 +156,8 @@ read -p "Install missing pkgs? (y/n): " confirm < /dev/tty
                             # install glow
                             mkdir -p ~/ruizhao/workspace/glow
                             cd ~/ruizhao/workspace/glow
-                            curl -fLO glow.deb https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_amd64.deb
-                            sudo dpkg -i glow_2.1.2_amd64.deb
+                            curl -fLo glow.deb https://github.com/charmbracelet/glow/releases/download/v2.1.2/glow_2.1.2_amd64.deb
+                            sudo dpkg -i glow.deb
                         fi
                         ;;
                 esac
