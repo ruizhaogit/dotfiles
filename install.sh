@@ -277,7 +277,7 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
         # vim +'PlugInstall --sync' +qa
         vim -es -u ~/.vimrc +'PlugInstall --sync' +qa < /dev/null || true
         # install markdown preview plugin based on glow
-        curl -fLo ~/.vim/plugin/markdown-preview.vim --create-dirs "https://github.com/ruizhaogit/glowing-vim-markdown-preview/blob/main/markdown-preview.vim"
+        curl -fLo ~/.vim/plugin/markdown-preview.vim --create-dirs "https://raw.githubusercontent.com/ruizhaogit/glowing-vim-markdown-preview/refs/heads/main/markdown-preview.vim"
         echo 'install vim plugins done'
     fi
 fi
