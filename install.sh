@@ -311,7 +311,11 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "export TERM=xterm-256color" >> ~/.bashrc
     # echo 'eval "$(fzf --bash)"' >> ~/.bashrc
     echo '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' >> ~/.bashrc
-    # show git branch in bash
+    ## show git branch in bash
+    # parse_git_branch() {
+    # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    # }
+    # export PS1="\u@\h \w \[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
     echo 'parse_git_branch() {
          git branch 2> /dev/null | sed -e '\''/^[^*]/d'\'' -e '\''s/* \(.*\)/(\1)/'\''
     }
