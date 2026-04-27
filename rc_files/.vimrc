@@ -326,6 +326,7 @@ set laststatus=2
 " Add full file path to your existing statusline
 set statusline=""
 set statusline+=%F
+set statusline+=%{FugitiveStatusline()}
 
 " setlocal keywordprg=git\ show
 set keywordprg=git\ show
