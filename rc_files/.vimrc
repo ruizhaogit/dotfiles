@@ -324,9 +324,9 @@ set undodir=~/.undodir
 "Always show the status bar
 set laststatus=2
 " Add full file path to your existing statusline
-set statusline=""
-set statusline+=%F
-set statusline+=%{FugitiveStatusline()}
+" set statusline=""
+" set statusline+=%F
+" set statusline+=%{FugitiveStatusline()}
 
 " setlocal keywordprg=git\ show
 set keywordprg=git\ show
@@ -420,6 +420,9 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'bfrg/vim-c-cpp-modern'
 Plug 'psliwka/vim-smoothie'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " Plug 'tpope/vim-repeat'
 " Plug 'vim-airline/vim-airline'
@@ -704,3 +707,42 @@ let g:jupytext_fmt = 'py' " md, py
 let g:jupytext_to_ipynb_opts = '--to=ipynb --update'
 let g:jupytext_print_debug_msgs = 0
 " let g:jupytext_filetype_map = {}
+
+
+" Cursorline highlight
+set cursorline
+
+" Indentation guidelines (Vim 9 native leadmultispace)
+function! s:SetupIndentGuides() abort
+  if &buftype ==# 'terminal' || &buftype ==# 'nofile' || &buftype ==# 'quickfix' || &filetype ==# 'nerdtree'
+    return
+  endif
+  let sw = shiftwidth()
+  if sw <= 0 | let sw = 4 | endif
+  let &l:listchars = 'tab:│ ,leadmultispace:│' . repeat(' ', sw - 1) . ',trail: '
+  setlocal list
+endfunction
+
+augroup IndentGuides
+  autocmd!
+  autocmd FileType,BufEnter * call s:SetupIndentGuides()
+  autocmd OptionSet shiftwidth,tabstop call s:SetupIndentGuides()
+augroup END
+
+" Powerline & Icon Statusline (Lualine style)
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'gruvbox'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:webdevicons_enable_airline_statusline = 0
+let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
+let g:airline_section_c = '%{WebDevIconsGetFileTypeSymbol()} %<%t%m'
+let g:airline_section_x = '%{coc#status()}'
+let g:airline_section_y = '%p%%'
+let g:airline_section_z = '%l:%c  󱑎 %{strftime("%H:%M")}'
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#branch#enabled = 1
