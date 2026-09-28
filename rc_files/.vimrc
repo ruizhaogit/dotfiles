@@ -489,6 +489,25 @@ let g:coc_disable_transparent_cursor = 1
 " fix for colorscheme
 autocmd ColorScheme * hi CocMenuSel ctermbg=237 guibg=#13354A ctermfg=Blue guifg=#15aabf
 
+" Coc Semantic Tokens Highlighting (AST-level coloring)
+augroup CocSemanticHighlights
+  autocmd!
+  autocmd ColorScheme,VimEnter * call s:SetupSemanticHighlights()
+augroup END
+
+function! s:SetupSemanticHighlights() abort
+  if hlexists('GruvboxOrange')
+    hi! link CocSemTypeParameter GruvboxOrange
+    hi! link CocSemTypeProperty GruvboxAqua
+    hi! link CocSemTypeNamespace GruvboxAqua
+    hi! link CocSemTypeClass GruvboxYellowBold
+    hi! link CocSemTypeDecorator GruvboxPurple
+    hi! link CocSemTypeVariable Normal
+  endif
+endfunction
+call s:SetupSemanticHighlights()
+
+
 " for debug coc
 " let g:node_client_debug = 1
 
