@@ -719,8 +719,17 @@ function! s:SetupIndentGuides() abort
   endif
   let sw = shiftwidth()
   if sw <= 0 | let sw = 4 | endif
-  let &l:listchars = 'tab:│ ,leadmultispace:│' . repeat(' ', sw - 1) . ',trail: '
-  setlocal list
+  try
+    if has('patch-8.2.4746') || has('nvim-0.8')
+      let &l:listchars = 'tab:│ ,leadmultispace:│' . repeat(' ', sw - 1) . ',trail: '
+    elseif has('patch-8.2.3389')
+      let &l:listchars = 'tab:│ ,multispace:│' . repeat(' ', sw - 1) . ',trail: '
+    else
+      let &l:listchars = 'tab:│ ,trail: '
+    endif
+    setlocal list
+  catch
+  endtry
 endfunction
 
 augroup IndentGuides
