@@ -33,6 +33,18 @@
           "directory": "/tmp/ccls"
         }
       }
+    },
+    "basedpyright": {
+      "command": "basedpyright-langserver",
+      "args": [
+        "--stdio"
+      ],
+      "filetypes": [
+        "python"
+      ],
+      "disabledFeatures": [
+        "pullDiagnostic"
+      ]
     }
   },
   "semanticTokens.enable": true
