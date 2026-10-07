@@ -47,5 +47,9 @@
       ]
     }
   },
-  "semanticTokens.enable": true
+  "semanticTokens.enable": true,
+  "semanticTokens.filetypes": [
+    "*"
+  ],
+  "pyright.enable": false
 }
