@@ -7,6 +7,7 @@
   "pyright.disableDiagnostics": true,
   "pyright.inlayHints.enable": false,
   "diagnostic.displayByAle": true,
+  "inlayHint.enable": false,
   "pyright.inlayHints.enable": false,
   "pyright.inlayHints.functionReturnTypes": false,
   "pyright.inlayHints.variableTypes": false,
