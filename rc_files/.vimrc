@@ -63,6 +63,19 @@ endfunction
 
 " autocmd VimEnter * call LoadSession()
 
+" mksession saves 'runtimepath' (sessionoptions contains "options"), which
+" freezes the plugin list into the session file. If a plugin is added or
+" removed afterwards, sourcing the session clobbers the current runtimepath
+" and lazy autoloads fail (e.g. E117 airline#extensions#wordcount#...).
+" Strip that line so the session never touches runtimepath.
+function! s:StripSessionRtp(file)
+  if filereadable(a:file)
+    let l:lines = readfile(a:file)
+    call filter(l:lines, 'v:val !~# "^set runtimepath="')
+    call writefile(l:lines, a:file)
+  endif
+endfunction
+
 " save and recover fzf sorted buffers
 " convert the number in g:fzf#vim#buffers from exponentional expression to float
 function! Pd()
@@ -246,7 +259,7 @@ set wildignore+=*cscope.out
 " autocmd VimLeave * execute 'mksession! ' . getcwd() . '~/.session.vim'
 " autocmd VimLeave * execute 'mks! ~/.auto_session.vim' | call Mb()
 " autocmd BufWritePost,VimLeave * execute 'mks! ~/.auto_session.vim' | call Mb()
-autocmd BufWritePost,VimLeave * if exists('g:SessionName') | execute 'mks! ~/.auto_session_' . g:SessionName . '.vim' | call Mb() | endif
+autocmd BufWritePost,VimLeave * if exists('g:SessionName') | execute 'mks! ~/.auto_session_' . g:SessionName . '.vim' | call Mb() | call s:StripSessionRtp(expand('~/.auto_session_' . g:SessionName . '.vim')) | endif
 
 " nnoremap <C-p> :find ./**/*
 " search down in subfolders
@@ -464,6 +477,13 @@ nmap ga <Plug>(EasyAlign)
 let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 " let g:fzf_layout = {'up': '40%'}
 let g:fzf_layout = {'window': {'width': '110%', 'height': '25%'}}
+
+" fzf border color: gruvbox's g:fzf_colors has no 'border' key, so fzf's
+" default slate-blue (256-color 59) is used for the rounded outline.
+" Use a muted gruvbox gray instead; re-add it after colorscheme reloads
+" because gruvbox resets g:fzf_colors on every load.
+let g:fzf_colors.border = ['fg', 'GruvboxBg3']
+autocmd ColorScheme * if exists('g:fzf_colors') | let g:fzf_colors.border = ['fg', 'GruvboxBg3'] | endif
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
