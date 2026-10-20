@@ -63,19 +63,6 @@ endfunction
 
 " autocmd VimEnter * call LoadSession()
 
-" mksession saves 'runtimepath' (sessionoptions contains "options"), which
-" freezes the plugin list into the session file. If a plugin is added or
-" removed afterwards, sourcing the session clobbers the current runtimepath
-" and lazy autoloads fail (e.g. E117 airline#extensions#wordcount#...).
-" Strip that line so the session never touches runtimepath.
-function! s:StripSessionRtp(file)
-  if filereadable(a:file)
-    let l:lines = readfile(a:file)
-    call filter(l:lines, 'v:val !~# "^set runtimepath="')
-    call writefile(l:lines, a:file)
-  endif
-endfunction
-
 " save and recover fzf sorted buffers
 " convert the number in g:fzf#vim#buffers from exponentional expression to float
 function! Pd()
@@ -259,7 +246,7 @@ set wildignore+=*cscope.out
 " autocmd VimLeave * execute 'mksession! ' . getcwd() . '~/.session.vim'
 " autocmd VimLeave * execute 'mks! ~/.auto_session.vim' | call Mb()
 " autocmd BufWritePost,VimLeave * execute 'mks! ~/.auto_session.vim' | call Mb()
-autocmd BufWritePost,VimLeave * if exists('g:SessionName') | execute 'mks! ~/.auto_session_' . g:SessionName . '.vim' | call Mb() | call s:StripSessionRtp(expand('~/.auto_session_' . g:SessionName . '.vim')) | endif
+autocmd BufWritePost,VimLeave * if exists('g:SessionName') | execute 'mks! ~/.auto_session_' . g:SessionName . '.vim' | call Mb() | endif
 
 " nnoremap <C-p> :find ./**/*
 " search down in subfolders
@@ -337,9 +324,9 @@ set undodir=~/.undodir
 "Always show the status bar
 set laststatus=2
 " Add full file path to your existing statusline
-" set statusline=""
-" set statusline+=%F
-" set statusline+=%{FugitiveStatusline()}
+set statusline=""
+set statusline+=%F
+set statusline+=%{FugitiveStatusline()}
 
 " setlocal keywordprg=git\ show
 set keywordprg=git\ show
@@ -433,9 +420,6 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'goerz/jupytext.vim'
 Plug 'bfrg/vim-c-cpp-modern'
 Plug 'psliwka/vim-smoothie'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 " Plug 'tpope/vim-repeat'
 " Plug 'vim-airline/vim-airline'
@@ -477,13 +461,6 @@ nmap ga <Plug>(EasyAlign)
 let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 " let g:fzf_layout = {'up': '40%'}
 let g:fzf_layout = {'window': {'width': '110%', 'height': '25%'}}
-
-" fzf border color: gruvbox's g:fzf_colors has no 'border' key, so fzf's
-" default slate-blue (256-color 59) is used for the rounded outline.
-" Use a muted gruvbox gray instead; re-add it after colorscheme reloads
-" because gruvbox resets g:fzf_colors on every load.
-let g:fzf_colors.border = ['fg', 'GruvboxBg3']
-autocmd ColorScheme * if exists('g:fzf_colors') | let g:fzf_colors.border = ['fg', 'GruvboxBg3'] | endif
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -727,51 +704,3 @@ let g:jupytext_fmt = 'py' " md, py
 let g:jupytext_to_ipynb_opts = '--to=ipynb --update'
 let g:jupytext_print_debug_msgs = 0
 " let g:jupytext_filetype_map = {}
-
-
-" Cursorline highlight
-set cursorline
-
-" Indentation guidelines (Vim 9 native leadmultispace)
-function! s:SetupIndentGuides() abort
-  if &buftype ==# 'terminal' || &buftype ==# 'nofile' || &buftype ==# 'quickfix' || &filetype ==# 'nerdtree'
-    return
-  endif
-  let sw = shiftwidth()
-  if sw <= 0 | let sw = 4 | endif
-  try
-    if has('patch-8.2.4746') || has('nvim-0.8')
-      let &l:listchars = 'tab:│ ,leadmultispace:│' . repeat(' ', sw - 1) . ',trail: '
-    elseif has('patch-8.2.3389')
-      let &l:listchars = 'tab:│ ,multispace:│' . repeat(' ', sw - 1) . ',trail: '
-    else
-      let &l:listchars = 'tab:│ ,trail: '
-    endif
-    setlocal list
-  catch
-  endtry
-endfunction
-
-augroup IndentGuides
-  autocmd!
-  autocmd FileType,BufEnter * call s:SetupIndentGuides()
-  autocmd OptionSet shiftwidth,tabstop call s:SetupIndentGuides()
-augroup END
-
-" Powerline & Icon Statusline (Lualine style)
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'gruvbox'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:webdevicons_enable_airline_statusline = 0
-let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
-let g:airline_section_c = '%{WebDevIconsGetFileTypeSymbol()} %<%t%m'
-let g:airline_section_x = '%{coc#status()}'
-let g:airline_section_y = '%p%%'
-let g:airline_section_z = '%l:%c  󱑎 %{strftime("%H:%M")}'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#coc#enabled = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#branch#enabled = 1
