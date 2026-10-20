@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # curl -o- https://raw.githubusercontent.com/ruizhaogit/dotfiles/refs/heads/main/install.sh | bash
 
 set -e
