@@ -497,9 +497,11 @@ augroup END
 
 function! s:SetupSemanticHighlights() abort
   if hlexists('GruvboxOrange')
-    hi! link CocSemTypeParameter GruvboxOrange
+    " parameters aqua so they don't collide with gruvbox's orange Operator (=, -, +)
+    hi! link CocSemTypeParameter GruvboxAqua
     hi! link CocSemTypeProperty GruvboxAqua
-    hi! link CocSemTypeNamespace GruvboxAqua
+    " modules blue so they don't collide with the aqua Include group (import/from)
+    hi! link CocSemTypeNamespace GruvboxBlue
     hi! link CocSemTypeClass GruvboxYellowBold
     hi! link CocSemTypeDecorator GruvboxPurple
     hi! link CocSemTypeVariable Normal
