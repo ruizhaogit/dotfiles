@@ -92,3 +92,14 @@ vim.keymap.set("n", "\\<C-r>", explorer_reveal, { desc = "Explorer: reveal file"
 vim.keymap.set("n", "<leader>gs", function()
   Snacks.picker.git_status({ cwd = LazyVim.root.git() })
 end, { desc = "Git Status (Root Dir)" })
+
+-- Diff mode declutter (ported from old vim config):
+-- <leader>lo shows more content (wrap, hide numbers/signcolumn)
+-- <leader>li restores the chrome (nowrap, numbers/signcolumn back)
+vim.keymap.set({ "n", "x" }, "<leader>lo", function()
+  vim.cmd.windo("set wrap foldcolumn=0 signcolumn=no nonumber norelativenumber")
+end, { desc = "Diff zoom out (hide UI chrome)" })
+
+vim.keymap.set({ "n", "x" }, "<leader>li", function()
+  vim.cmd.windo("set nowrap signcolumn=yes number relativenumber")
+end, { desc = "Diff zoom in (restore UI chrome)" })
