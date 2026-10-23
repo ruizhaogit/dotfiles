@@ -6,3 +6,8 @@
 vim.keymap.set("n", "<C-p>", function()
   Snacks.picker.buffers()
 end, { desc = "Switch Buffer" })
+
+-- Toggle file explorer with <C-n>
+vim.keymap.set("n", "<C-n>", function()
+  Snacks.explorer()
+end, { desc = "Explorer Snacks (root dir)" })
