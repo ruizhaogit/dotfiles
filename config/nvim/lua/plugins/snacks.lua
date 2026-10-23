@@ -21,6 +21,9 @@ return {
             },
           },
         },
+        grep = {
+          hidden = true, -- search hidden files (e.g. .vimrc) in live grep
+        },
         git_log = {
           actions = {
             -- diff two commits: select both with <Tab>, then press D.
