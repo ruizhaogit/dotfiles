@@ -7,6 +7,7 @@ return {
     picker = {
       sources = {
         explorer = {
+          hidden = true, -- show dotfiles, so reveal works for hidden files/dirs
           win = {
             input = {
               keys = {
