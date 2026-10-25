@@ -29,3 +29,13 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufFilePost" }, {
     end
   end,
 })
+
+-- Disable LazyVim auto-enabling of spell checking in text/markdown files
+vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("lazyvim_wrap", { clear = true }),
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})

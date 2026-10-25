@@ -7,3 +7,6 @@ vim.g.autoformat = false
 
 -- Disable diagnostics on startup by default (toggle anytime with <leader>ud)
 vim.diagnostic.enable(false)
+
+-- Disable spelling on startup by default (toggle anytime with <leader>us)
+vim.opt.spell = false
