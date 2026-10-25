@@ -92,6 +92,22 @@ vim.keymap.set("n", "\\<C-r>", explorer_reveal, { desc = "Explorer: reveal file"
 vim.keymap.set("n", "<leader>gs", function()
   Snacks.picker.git_status({ cwd = LazyVim.root.git() })
 end, { desc = "Git Status (Root Dir)" })
+-- Disable Lazy mapping on <leader>l so it acts cleanly as a prefix
+vim.keymap.del("n", "<leader>l")
+
+vim.keymap.set("n", "<leader>lg", "<leader>gs", { remap = true, desc = "Git Status (Root Dir)" })
+vim.keymap.set("n", "<leader>ls", "<leader>ss", { remap = true, desc = "LSP Symbols" })
+vim.keymap.set("n", "<leader>r", "<leader>sg", { remap = true, desc = "Grep (Root Dir)" })
+vim.keymap.set({ "n", "x" }, "<leader>lr", function()
+  Snacks.picker.grep({
+    cwd = LazyVim.root(),
+    search = function(picker)
+      return picker:word()
+    end,
+  })
+end, { desc = "Grep Current Word (Root Dir)" })
+vim.keymap.set("n", "<leader>lf", "<leader>ff", { remap = true, desc = "Find Files (Root Dir)" })
+vim.keymap.set("n", "<leader>lc", "<leader>ut", { remap = true, desc = "Toggle Treesitter Context" })
 
 -- Diff mode declutter (ported from old vim config):
 -- <leader>lo shows more content (wrap, hide numbers/signcolumn)
@@ -103,3 +119,6 @@ end, { desc = "Diff zoom out (hide UI chrome)" })
 vim.keymap.set({ "n", "x" }, "<leader>li", function()
   vim.cmd.windo("set nowrap signcolumn=yes number relativenumber")
 end, { desc = "Diff zoom in (restore UI chrome)" })
+
+-- Jump to next git hunk with ]c (mapping to ]h)
+vim.keymap.set("n", "]c", "]h", { remap = true, desc = "Next Hunk" })

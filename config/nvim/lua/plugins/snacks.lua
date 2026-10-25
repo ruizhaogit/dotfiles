@@ -6,6 +6,9 @@ return {
   opts = {
     picker = {
       sources = {
+        files = {
+          hidden = true, -- search hidden files (dotfiles) in file search
+        },
         explorer = {
           hidden = true, -- show dotfiles, so reveal works for hidden files/dirs
           win = {
