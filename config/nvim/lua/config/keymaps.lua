@@ -120,5 +120,29 @@ vim.keymap.set({ "n", "x" }, "<leader>li", function()
   vim.cmd.windo("set nowrap signcolumn=yes number relativenumber")
 end, { desc = "Diff zoom in (restore UI chrome)" })
 
--- Jump to next git hunk with ]c (mapping to ]h)
-vim.keymap.set("n", "]c", "]h", { remap = true, desc = "Next Hunk" })
+-- Next / previous git hunk (or diff change in diff mode)
+vim.keymap.set("n", "]c", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "]c", bang = true })
+  else
+    local gs = package.loaded.gitsigns
+    if gs then
+      gs.nav_hunk("next")
+    else
+      vim.cmd.normal({ "]c", bang = true })
+    end
+  end
+end, { desc = "Next Hunk / Diff Change" })
+
+vim.keymap.set("n", "[c", function()
+  if vim.wo.diff then
+    vim.cmd.normal({ "[c", bang = true })
+  else
+    local gs = package.loaded.gitsigns
+    if gs then
+      gs.nav_hunk("prev")
+    else
+      vim.cmd.normal({ "[c", bang = true })
+    end
+  end
+end, { desc = "Prev Hunk / Diff Change" })
